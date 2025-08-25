@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montagem Deck</title>
+    <link rel="stylesheet" href="montagem.css">
+     <!-- https://fontawesome.com/icons/house?s=solid link do icone casa-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <a href="../menu-principal/menu-inicial.html"id="botao-menu"><i class="fa-solid fa-house"></i></a>
+    <h1 id="titulo">Deck</h1>
+    <section class="container-deck">
+        <div class="deck">
+        </div>
+        <p>Custo médio de elixir:</p>
+        <p id="custo-elixir">0.0</p>
+
+        <div class="selecao-cartas">
+            <!--Imagens tiradas de https://www.deckshop.pro/br/card/list-->
+            <div class="todas-cartas">
+                <h2 id="campeoes">Campeões</h2>
+                <img class="carta" data-custo="6" id="bandida-lider" src="img/campeoes/bandida_lider.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="rei-esqueleto" src="img/campeoes/esqueleton_king.png"
+                    draggable="true">
+                <img class="carta" data-custo="5" id="gobinstein" src="img/campeoes/goblinstein.png" draggable="true">
+                <img class="carta" data-custo="4" id="golden-knight" src="img/campeoes/golden_knight.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="little-prince" src="img/campeoes/little_prince.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="mighty-miner" src="img/campeoes/mighty_miner.png"
+                    draggable="true">
+                <img class="carta" data-custo="5" id="monge" src="img/campeoes/monge.png" draggable="true">
+                <img class="carta" data-custo="5" id="rainha-archeiro" src="img/campeoes/rainha_arqueira.png"
+                    draggable="true">
+
+                <h2 id="lendarias">Lendárias</h2>
+                <img class="carta" data-custo="4" id="arqueiro-magico" src="img/lendaria/arqueiro_magico.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="bandida" src="img//lendaria/bandida.png" draggable="true">
+                <img class="carta" data-custo="4" id="bruxa-mae" src="img//lendaria/bruxa_mae.png" draggable="true">
+                <img class="carta" data-custo="4" id="bruxa-sombria" src="img//lendaria/bruxa_sombria.png"
+                    draggable="true">
+                <img class="carta" data-custo="5" id="cemiterio" src="img//lendaria/cemiterio.png" draggable="true">
+                <img class="carta" data-custo="5" id="domadora-de-cabras" src="img//lendaria/domadora_cabra.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="dragao-infernal" src="img//lendaria/dragao_infernal.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="fantasma-real" src="img//lendaria/fantasma_real.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="fenix" src="img//lendaria/fenix.png" draggable="true">
+                <img class="carta" data-custo="5" id="goblin-machine" src="img//lendaria/globlin_machine.png"
+                    draggable="true">
+                <img class="carta" data-custo="7" id="lava-hound" src="img//lendaria/lava_hound.png" draggable="true">
+                <img class="carta" data-custo="4" id="lenhador" src="img//lendaria/lenhador.png" draggable="true">
+                <img class="carta" data-custo="4" id="mago-eletrico" src="img//lendaria/mago_eletrico.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="mago-gelo" src="img//lendaria/mago_gelo.png" draggable="true">
+                <img class="carta" data-custo="7" id="mega-cavaleiro" src="img//lendaria/mega_cavaleiro.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="mineiro" src="img//lendaria/mineiro.png" draggable="true">
+                <img class="carta" data-custo="3" id="pescador" src="img//lendaria/pescador.png" draggable="true">
+                <img class="carta" data-custo="3" id="princesa" src="img//lendaria/princesa.png" draggable="true">
+                <img class="carta" data-custo="6" id="princesa-dragao" src="img//lendaria/princesa_dragao.png"
+                    draggable="true">
+                <img class="carta" data-custo="6" id="sparky" src="img//lendaria/sparky.png" draggable="true">
+                <img class="carta" data-custo="2" id="tronco" src="img//lendaria/tronco.png" draggable="true">
+
+                <h2 id="epicas">Épicas</h2>
+                <img class="carta" data-custo="5" id="balao" src="img/epicas/balao.png" draggable="true">
+                <img class="carta" data-custo="2" id="barril-barbaros" src="img/epicas/barril_barbaro.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="barril-goblin" src="img/epicas/barril_goblin.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="bebe-dragao" src="img/epicas/bebe_Dragao.png" draggable="true">
+                <img class="carta" data-custo="6" id="x-besta" src="img/epicas/besta.png" draggable="true">
+                <img class="carta" data-custo="5" id="bowler" src="img/epicas/bowler.png" draggable="true">
+                <img class="carta" data-custo="5" id="bruxa" src="img/epicas/bruxa.png" draggable="true">
+                <img class="carta" data-custo="4" id="cacador" src="img/epicas/cacador.png" draggable="true">
+                <img class="carta" data-custo="5" id="canhao-movel" src="img/epicas/canhao_movel.png" draggable="true">
+                <img class="carta" data-custo="3" id="clone" src="img/epicas/clone.png" draggable="true">
+                <img class="carta" data-custo="5" id="dragao-eletrico" src="img/epicas/dragao_eletrico.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="goblin-drill" src="img/epicas/drill.png" draggable="true">
+                <img class="carta" data-custo="1" id="espelho" src="img/epicas/espelho.png" draggable="true">
+                <img class="carta" data-custo="5" id="executor" src="img/epicas/executor.png" draggable="true">
+                <img class="carta" data-custo="3" id="exercito-esqueletos" src="img/epicas/exercito_esqueleto.png"
+                    draggable="true">
+                <img class="carta" data-custo="2" id="furia" src="img/epicas/furia.png" draggable="true">
+                <img class="carta" data-custo="4" id="gelo" src="img/epicas/gelo.png" draggable="true">
+                <img class="carta" data-custo="7" id="gigante-eletrico" src="img/epicas/gigante_eletrico.png"
+                    draggable="true">
+                <img class="carta" data-custo="6" id="gigante-esqueleto" src="img/epicas/gigante_Esqueleto.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="gigante-das-runas" src="img/epicas/gigante_Runas.png"
+                    draggable="true">
+                <img class="carta" data-custo="6" id="goblin-gigante" src="img/epicas/gobling_gigante.png"
+                    draggable="true">
+                <img class="carta" data-custo="8" id="golem" src="img/epicas/golem.png" draggable="true">
+                <img class="carta" data-custo="3" id="guardas" src="img/epicas/guardas.png" draggable="true">
+                <img class="carta" data-custo="2" id="maldicao-goblin" src="img/epicas/maldicao_goblin.png"
+                    draggable="true">
+                <img class="carta" data-custo="7" id="pekka" src="img/epicas/pekka.png" draggable="true">
+                <img class="carta" data-custo="5" id="principe" src="img/epicas/principe.png" draggable="true">
+                <img class="carta" data-custo="4" id="principe-trevas" src="img/epicas/principe_trevas.png"
+                    draggable="true">
+                <img class="carta" data-custo="6" id="relampago" src="img/epicas/relampago.png" draggable="true">
+                <img class="carta" data-custo="3" id="tornado" src="img/epicas/tornado.png" draggable="true">
+                <img class="carta" data-custo="4" id="veneno" src="img/epicas/veneno.png" draggable="true">
+                <img class="carta" data-custo="3" id="tornado" src="img/epicas/void.png" draggable="true">
+                <img class="carta" data-custo="2" id="wall-breakers" src="img/epicas/wall_Breakers.png"
+                    draggable="true">
+
+                <h2 id="raras">Raras</h2>
+                <img class="carta" data-custo="5" id="gigante" src="img/raras/gigante.png" draggable="true">
+                <img class="carta" data-custo="3" id="goblin-dardo" src="img/raras/goblin_Dardo.png" draggable="true">
+                <img class="carta" data-custo="4" id="ariete" src="img/raras/ariete.png" draggable="true">
+                <img class="carta" data-custo="4" id="bola-fogo" src="img/raras/bola_fogo.png" draggable="true">
+                <img class="carta" data-custo="2" id="bush" src="img/raras/bush.png" draggable="true">
+                <img class="carta" data-custo="6" id="cabana-barbaros" src="img/raras/cabana_barbaro.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="cabana-goblin" src="img/raras/cabana_goblin.png" draggable="true">
+                <img class="carta" data-custo="6" id="coletor-elixir" src="img/raras/coletor_elixir.png"
+                    draggable="true">
+                <img class="carta" data-custo="4" id="corredor" src="img/raras/corredor.png" draggable="true">
+                <img class="carta" data-custo="4" id="curandeira" src="img/raras/curandeira.png" draggable="true">
+                <img class="carta" data-custo="1" id="espirito-cura" src="img/raras/cure_spirit.png" draggable="true">
+                <img class="carta" data-custo="4" id="flying-machine" src="img/raras/flying_maching.png"
+                    draggable="true">
+                <img class="carta" data-custo="6" id="foguete" src="img/raras/foguete.png" draggable="true">
+                <img class="carta" data-custo="4" id="fornalha" src="img/raras/fornalha.png" draggable="true">
+                <img class="carta" data-custo="3" id="golem-elixir" src="img/raras/golem_elixir.png" draggable="true">
+                <img class="carta" data-custo="2" id="golem-gelo" src="img/raras/ice_golem.png" draggable="true">
+                <img class="carta" data-custo="4" id="jaula-goblin" src="img/raras/jaula_goblin.png" draggable="true">
+                <img class="carta" data-custo="4" id="kamikaze" src="img/raras/kamizake.png" draggable="true">
+                <img class="carta" data-custo="3" id="lapide" src="img/raras/lapide.png" draggable="true">
+                <img class="carta" data-custo="5" id="mago" src="img/raras/mago.png" draggable="true">
+                <img class="carta" data-custo="3" id="mega-servo" src="img/raras/megaservo.png" draggable="true">
+                <img class="carta" data-custo="4" id="mini-pekka" src="img/raras/mini_pekka.png" draggable="true">
+                <img class="carta" data-custo="4" id="mosqueteira" src="img/raras/mosqueteira.png" draggable="true">
+                <img class="carta" data-custo="5" id="porcos" src="img/raras/porcos.png" draggable="true">
+                <img class="carta" data-custo="4" id="torre-bombardeiro" src="img/raras/torre_bombardeiro.png"
+                    draggable="true">
+                <img class="carta" data-custo="5" id="torre-inferno" src="img/raras/torre_inferno.png" draggable="true">
+                <img class="carta" data-custo="4" id="valkyria" src="img/raras/valkiria.png" draggable="true">
+                <img class="carta" data-custo="3" id="terremoto" src="img/raras/terremoto.png" draggable="true">
+                <img class="carta" data-custo="4" id="zappies" src="img/raras/zappies.png" draggable="true">
+                <img class="carta" data-custo="9" id="tres-mosqueteiras" src="img/raras/tres_mosqueteiras.png"
+                    draggable="true">
+
+                <h2 id="comuns">Comuns</h2>
+                <img class="carta" data-custo="6" id="gigante-real" src="img/comuns/gigante_real.png" draggable="true">
+                <img class="carta" data-custo="3" id="pirotecnica" src="img/comuns/pirotecnica.png" draggable="true">
+                <img class="carta" data-custo="3" id="arqueiras" src="img/comuns/arqueira.png" draggable="true">
+                <img class="carta" data-custo="5" id="barbaros" src="img/comuns/barbaros.png" draggable="true">
+                <img class="carta" data-custo="4" id="morteiro" src="img/comuns/mortero.png" draggable="true">
+                <img class="carta" data-custo="4" id="dragoes-esqueleto" src="img/comuns/skelly_dragon.png"
+                    draggable="true">
+                <img class="carta" data-custo="1" id="esqueletos" src="img/comuns/skellys.png" draggable="true">
+                <img class="carta" data-custo="3" id="barril-esqueletos" src="img/comuns/skelly_barrel.png"
+                    draggable="true">
+                <img class="carta" data-custo="7" id="guardas-reais" src="img/comuns/royal_guards.png" draggable="true">
+                <img class="carta" data-custo="3" id="entrega-real" src="img/comuns/royal_delivery.png"
+                    draggable="true">
+                <img class="carta" data-custo="5" id="rascals" src="img/comuns/rascals.png" draggable="true">
+                <img class="carta" data-custo="2" id="morcegos" src="img/comuns/morcegos.png" draggable="true">
+                <img class="carta" data-custo="5" id="horda-servos" src="img/comuns/horda_servos.png" draggable="true">
+                <img class="carta" data-custo="1" id="espirito-gelo" src="img/comuns/ice_spirit.png" draggable="true">
+                <img class="carta" data-custo="2" id="goblins" src="img/comuns/goblins.png" draggable="true">
+                <img class="carta" data-custo="2" id="goblins-lanceiros" src="img/comuns/goblin_lanceiros.png"
+                    draggable="true">
+                <img class="carta" data-custo="3" id="gangue-goblins" src="img/comuns/goblin_gang.png" draggable="true">
+                <img class="carta" data-custo="1" id="espirito-fogo" src="img/comuns/fire_spirit.png " draggable="true">
+                <img class="carta" data-custo="1" id="espirito-eletrico" src="img/comuns/e_spirit.png" draggable="true">
+                <img class="carta" data-custo="3" id="servos" src="img/comuns/servos.png" draggable="true">
+                <img class="carta" data-custo="3" id="cavaleiro" src="img/comuns/cavaleiro.png" draggable="true">
+                <img class="carta" data-custo="2" id="bombardeiro" src="img/comuns/bombardeiro.png" draggable="true">
+                <img class="carta" data-custo="2" id="berzerk" src="img/comuns/berzerk.png" draggable="true">
+                <img class="carta" data-custo="6" id="barbaros-elite" src="img/comuns/barbaro_elite.png"
+                    draggable="true">
+                <img class="carta" data-custo="2" id="bola-neve" src="img/comuns/bola_neve.png" draggable="true">
+                <img class="carta" data-custo="3" id="canhao" src="img/comuns/canhao.png" draggable="true">
+                <img class="carta" data-custo="4" id="teste" src="img/comuns/tesla.png" draggable="true">
+                <img class="carta" data-custo="3" id="flechas" src="img/comuns/flechas.png" draggable="true">
+                <img class="carta" data-custo="2" id="zap" src="img/comuns/zap.png" draggable="true">
+                <h2 id="usadas">Usadas</h2>
+                <img class="i2tb" data-custo="0" id="i2tb" src="img/i2tb.jpeg" draggable="true">
+
+            </div>
+        </div>
+    </section>
+    <button id="botao-salvar">Salvar</button>
+    <script src="montagem.js"></script>
+</body>
+
+</html>

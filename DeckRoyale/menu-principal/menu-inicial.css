@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'fonteClash';
+    src: url('fonte/You\ Blockhead.ttf');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.titulo {
+    margin-top: -39px;
+    margin-left: 70px;
+    font-size: 25px;
+    font-family: fonteClash;
+    color: rgb(255, 217, 0);
+}
+
+#botao-menu {
+    margin-left: 10px;
+    display: flex;
+    width: 50px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 217, 0);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.menu-principal {
+    background: linear-gradient(45deg,black, white, black) ;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.container-menu-lateral {
+    background-color: #0e4378;
+    width: 300px;
+    height: 963px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+.icones-menu {
+    border-bottom: 2px solid black;
+    padding: 15px 0px 0px;
+}
+
+.opcoes-menu {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    margin-left: 6px; 
+}
+
+.botao-opcao {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    background-color: white;
+    border: 8px solid white;
+    border-radius: 8px;
+    padding: 5px 20px;
+    margin-left: 0;
+}
+
+.botao-sair {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 90px;
+    margin-top: 20px;
+}
+
+.informacao {
+    margin-left: 300px;
+    width: 1354px;
+    height: 923px;
+}
+
+.informacao h1, h3 {
+    font-family: fonteClash;
+    line-height: 150%;
+    width: 1054PX;
+    height: auto;
+}
+
+.imagem-royale {
+    margin-left: 200px;
+}

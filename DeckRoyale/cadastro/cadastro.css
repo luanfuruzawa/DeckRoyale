@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'fonteClash';
+    src: url('fonte/You\ Blockhead.ttf');
+}
+
+.caixa-registro {
+    background-color: rgb(73, 73, 216);
+    margin-left: 820px;
+    margin-right: 820px;
+    margin-top: 80px;
+    border: 1px solid rgb(73, 73, 216);
+    border-radius: 30px;
+    padding: 20;
+    padding-bottom: 15px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* imagem gerada com IA (Chat GPT 05/08)*/
+    background-image: url(img/fundo.png);
+    background-size: cover;
+    font-family: 'Bangers', cursive;
+
+}
+
+.textoh2-cadastrar {
+    font-size: 20px;
+    margin-left: 45px;
+    margin-top: 3px;
+}
+
+h2 {
+    font-weight: 900;
+    font-size: 28px;
+    color: rgb(207, 177, 3);
+}
+
+.campos-cadastro {
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+#botao-cadastro {
+    margin-left: 20px;
+    background-color: rgb(255, 226, 62);
+    color: rgb(192, 165, 11);
+    border: 1px solid rgb(192, 165, 11);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.ir-para-login {
+    margin-left: 10px;
+    color: rgb(192, 165, 11);
+}
+
+#link-login {
+    color: rgb(255, 226, 62);
+}
+
+.titulo {
+    font-family: fonteClash;
+    font-size: 30px;
+    margin-top: 300px;
+    margin-left: 700px;
+    color: rgb(255, 217, 0);
+}
