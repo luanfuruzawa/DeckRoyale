@@ -23,7 +23,7 @@ body {
     /* imagem gerada com IA (Chat GPT 05/08)*/
     background-image: url(img/fundo.png);
     background-size: cover;
-    font-family: 'Bangers', cursive;
+    font-family: fonteClash;
 
 }
 
@@ -45,13 +45,14 @@ h2 {
 }
 
 #botao-login {
-    margin-left: 30px;
+    margin-left: 20px;
     background-color: rgb(255, 226, 62);
     color: rgb(192, 165, 11);
     border: 1px solid rgb(192, 165, 11);
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 5px;
+    font-family: fonteClash;
 }
 
 
