@@ -10,7 +10,7 @@ body {
 }
 
 .titulo {
-    margin-top: -39px;
+    margin-top: -32px;
     margin-left: 70px;
     font-size: 25px;
     font-family: fonteClash;
@@ -41,7 +41,7 @@ body {
 
 .container-menu-lateral {
     background-color: #0e4378;
-    width: 300px;
+    width: 315px;
     height: 963px;
     margin-bottom: 0px;
     margin-left: 0px;
