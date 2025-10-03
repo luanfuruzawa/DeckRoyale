@@ -1,16 +1,17 @@
 <?php
-    class Usuario
+    class Carta
     {
         private string $id;
         private int $custoCarta;
-        private string $img; 
+        private string $caminhoCarta; 
         private string $raridadeCarta;
 
-        //Método construtor
-        public function __construct(string $id, int $custoCarta, string $img, string $raridadeCarta){
+        private int $custo;
+        public function __construct(string $id, int $custoCarta, string $caminhoCarta, string $raridadeCarta){
             $this->id = $id;
-            $this->tipoCarta = $tipoCarta;
+            $this->custoCarta = $custoCarta;
             $this->raridadeCarta = $raridadeCarta;
+            $this->caminhoCarta = $caminhoCarta;
         }
 
         public function getId(): string
@@ -22,15 +23,14 @@
         {
             return $this->custoCarta;
         }
-
-        public function getImg(): string
-        {
-            return $this->img;
-        }
-
         public function getRaridadeCarta(): string
         {
             return $this->raridadeCarta;
         }
+        public function getCaminhoCarta(): string
+        {
+            return $this->caminhoCarta;
+        }
+    
     }
 ?>

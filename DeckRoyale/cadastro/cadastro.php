@@ -29,8 +29,6 @@ $erro = $_GET['erro'] ?? '';
             <div class="titulo">
                 <h1>Deck Royale</h1>
             </div>
-            <section class="container-form">
-                <div class="form-wrapper">
                     <?php if ($erro === 'credenciais'): ?>
                         <p class="mensagem-erro">Nome, email ou senha incorretos.</p>
                     <?php elseif ($erro === 'campos'): ?>
@@ -55,8 +53,6 @@ $erro = $_GET['erro'] ?? '';
                             Já tem conta? <a id="link-login" href="../login/login.php">Clique aqui</a>
                         </div>
                     </div>
-                </div>
-            </section>
         <?php endif; ?>
     </main>
 

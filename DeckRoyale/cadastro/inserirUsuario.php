@@ -13,7 +13,7 @@
         echo "Usuario já existe! {$email}\n";
         exit;
     }
-    $usuario = new Usuario(0, $email, $senha, $nome);
+    $usuario = new Usuario(0, $email, $senha, $nome, $perfil);
     $repo->salvar($usuario);
     
 
