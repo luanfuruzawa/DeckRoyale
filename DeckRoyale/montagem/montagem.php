@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Montagem Deck</title>
     <link rel="stylesheet" href="montagem.css">
-     <!-- https://fontawesome.com/icons/house?s=solid link do icone casa-->
+    <!-- https://fontawesome.com/icons/house?s=solid link do icone casa-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <a href="../menu-principal/menu-inicial.html"id="botao-menu"><i class="fa-solid fa-house"></i></a>
+    <form action="../menu-principal/menu-principal.php" >
+        <button type="submit" id="botao-menu"><i class="fa-solid fa-house"></i></button>
+    </form>
+
     <h1 id="titulo">Deck</h1>
     <section class="container-deck">
         <div class="deck">
+
         </div>
         <p>Custo médio de elixir:</p>
         <p id="custo-elixir">0.0</p>

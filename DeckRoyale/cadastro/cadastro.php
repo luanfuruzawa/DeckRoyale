@@ -16,17 +16,14 @@ $erro = $_GET['erro'] ?? '';
 <body>
     <main>
         <?php
-        if ($usuarioLogado): ?>
-            <section class="container-topo">
-                <div class="topo-direita">
-                    <p>Você já está logado como <strong>
+        if ($usuarioLogado): ?>                
+                    <p id="texto-logout">Você já está logado como <strong>
                             <?php echo htmlspecialchars($usuarioLogado); ?>
                         </strong></p>
+
                     <form action="logout.php" method="post">
-                        <button type="submit" class="botao-sair">Sair</button>
+                        <button type="submit" id="botao-sair">Sair</button>
                     </form>
-                </div>
-            </section>
         <?php else: ?>
 
             <div class="titulo">
@@ -35,9 +32,9 @@ $erro = $_GET['erro'] ?? '';
             <section class="container-form">
                 <div class="form-wrapper">
                     <?php if ($erro === 'credenciais'): ?>
-                        <p class="mensagem-erro">Usuário ou senha incorretos.</p>
+                        <p class="mensagem-erro">Nome, email ou senha incorretos.</p>
                     <?php elseif ($erro === 'campos'): ?>
-                        <p class="mensagem-erro">Preencha e-mail e senha.</p>
+                        <p class="mensagem-erro">Preencha e-mail, senha e nome.</p>
                     <?php endif; ?>
                     <div class="caixa-registro">
                         <div class="textoh2-cadastrar">
@@ -45,7 +42,7 @@ $erro = $_GET['erro'] ?? '';
                         </div>
                         <div class="campos-cadastro">
                             <form action="autenticar.php" method="post">
-                                <input type="text" id="usuario" name="usuario" placeholder="Usuario: ">
+                                <input type="text" id="nome" name="nome" placeholder="Nome: ">
                                 <br><br>
                                 <input type="text" id="email" name="email" placeholder="Email: ">
                                 <br><br>
@@ -53,6 +50,9 @@ $erro = $_GET['erro'] ?? '';
                                 <br><br>
                                 <button type="submit" value="Entrar" id="botao-cadastro">Fazer Cadastro</button>
                             </form>
+                        </div>
+                        <div class="ir-para-login">
+                            Já tem conta? <a id="link-login" href="../login/login.php">Clique aqui</a>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit;
+}
+$usuarioLogado = $_SESSION['usuario'] ?? null;
+if (!$usuarioLogado) {
+    header('Location: login.php');
+    exit;
+}
+function pode(string $perm): bool
+{
+    return in_array($perm, $_SESSION['permissoes'] ?? [], true);
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,13 +30,20 @@
     <section class="menu-principal">
         <div class="container-menu-lateral">
             <div class="icones-menu">
-                <button id="botao-menu"><i class="fa-solid fa-house"></i></button>
+
                 <h1 class="titulo">Deck Royale</h1>
             </div>
             <div class="opcoes-menu">
-                <a class="botao-opcao" href="../montagem/montagem.html">Montar Deck</a>
+                <a class="botao-opcao" href="../montagem/montagem.php">Montar Deck</a>
                 <a class="botao-opcao" href="../pesquisa/pesquisa-deck.html">Meus Decks</a>
-                <a class="botao-opcao" href="../cadastro/cadastro.html">Sair</a>
+                <?php if (isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'Admin'): ?>
+                    <form action="../cadastro-carta/cadastro-carta.php" method="post">
+                        <button class="botao-opcao" type="submit">Cadastrar Cartas</button>
+                    </form>
+                <?php endif; ?>
+                <form action="../login/login.php" method="post">
+                    <button class="botao-sair" type="submit">Sair</button>
+                </form>
             </div>
         </div>
         <div class="informacao">
@@ -32,7 +55,7 @@
                 adversários.
             </h1>
             <img class="imagem-royale" src="img/royale.png" alt="royale">
-           
+
         </div>
     </section>
 </body>

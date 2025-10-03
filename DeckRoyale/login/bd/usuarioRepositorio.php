@@ -29,6 +29,7 @@
         return $usuario ? password_verify($senha, $usuario->getSenha()) : false;
 
         }
+        
 
         public function salvar(Usuario $usuario): void
         {

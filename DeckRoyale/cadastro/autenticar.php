@@ -1,32 +1,35 @@
 <?php
 session_start();
 
-
 require_once __DIR__ . '/bd/conexao-bd.php';
 require_once __DIR__ . '/bd/usuarioRepositorio.php';
 require_once __DIR__ . '/bd/usuario.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: cadastro.php.php');
+    header('Location: cadastro.php');
     exit;
 }
 
+$nome = $_POST['nome'] ?? '';
 $email = trim($_POST['email'] ?? '');
 $senha = $_POST['senha'] ?? '';
 
-if ($email === '' || $senha === '') {
+if ($email === '' || $senha === '' || $nome === '') {
     header('Location: cadastro.php?erro=campos');
     exit;
 }
 
 $repo = new usuarioRepositorio($pdo);
 
-if ($repo->autenticar($email, $senha)) {
-    session_regenerate_id(true);
-    $_SESSION['usuario'] = $email;
-    header('Location:menu-principal.php');
+if ($repo->buscarPorEmail($email)) {
+    header('Location: cadastro.php?erro=credenciais');
     exit;
 }
-header('Location: cadastro.php?erro=credenciais');
+
+$usuario = new Usuario(0, $email, $senha, $nome, 'User');
+$repo->salvar($usuario);
+
+$_SESSION['usuario'] = $email;
+header('Location: ../menu-principal/menu-principal.php');
 exit;
 ?>
