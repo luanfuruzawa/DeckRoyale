@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'fonteClash';
+    src: url('../fonte/You Blockhead.ttf');
+}
+body {
+    margin: 0;
+    font-family: 'fonteClash', sans-serif;
+    background-image: url("../imgFundo/fundo-section.jpg");
+    background-position: center;
+}
+
+.dados-carta{
+    margin-top: -100px;
+}
+#botao-menu {
+    margin: 10px;
+    width: 50px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 217, 0);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formulario h2 {
+    color: rgb(255, 217, 0);
+    margin-bottom: 10px;
+}
+
+input {
+    width: 350px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(255, 217, 0);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    width:350px;
+}
+
+
+.titulo {
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 217, 0);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.container-formularios {
+    display: flex;  
+    margin-left: 725px;  
+    gap: 40px;                
+    padding: 40px;
+    margin-top: 80px;
+}
+p{
+    color: rgb(255, 217, 0);
+}

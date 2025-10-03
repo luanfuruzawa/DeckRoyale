@@ -10,17 +10,19 @@ $sucesso = $_GET['sucesso'] ?? '';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro-carta.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Cadastro-Carta</title>
+    <title>Cadastro de Carta</title>
 </head>
 
 <body>
-    <form action="../menu-principal/menu-principal.php" >
-        <button type="submit" id="botao-menu"><i class="fa-solid fa-house"></i></button>
+    <form action="../administrar-carta/administrar-carta.php">
+        <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
-    <main>
 
-            <div class="dados-carta">
-                <h1>Cadastro de Carta</h1>
+    <main>
+        <section class="container-formulario">
+            <div class="formulario">
+                <h1 class="titulo">Cadastro de Carta</h1>
+
                 <?php if ($erro === 'existente'): ?>
                     <p class="mensagem-erro">Essa carta já está cadastrada.</p>
                 <?php elseif ($erro === 'vazio'): ?>
@@ -32,19 +34,19 @@ $sucesso = $_GET['sucesso'] ?? '';
                 <?php endif; ?>
 
                 <form action="inserirCarta.php" method="post">
-                    <input type="text" id="id" name="id" placeholder="Nome: ">
+                    <input type="text" name="id" placeholder="Nome: ">
                     <br><br>
-                    <input type="number" id="custo" name="custo" placeholder="Custo Elixir: ">
+                    <input type="number" name="custo" placeholder="Custo Elixir: ">
                     <br><br>
-                    <input type="text" id="caminho-carta" name="caminho-carta" placeholder="Caminho Carta: ">
+                    <input type="text" name="caminho-carta" placeholder="Caminho Carta: ">
                     <br><br>
-                    <input type="text" id="raridade-carta" name="raridade-carta" placeholder="Raridade Carta: ">
+                    <input type="text" name="raridade-carta" placeholder="Raridade Carta: ">
                     <br><br>
 
                     <button type="submit">Cadastrar Carta</button>
                 </form>
             </div>
-        </div>
+        </section>
     </main>
 </body>
 
