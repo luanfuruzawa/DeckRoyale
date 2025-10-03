@@ -37,8 +37,8 @@ function pode(string $perm): bool
                 <a class="botao-opcao" href="../montagem/montagem.php">Montar Deck</a>
                 <a class="botao-opcao" href="../pesquisa/pesquisa-deck.html">Meus Decks</a>
                 <?php if (isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'Admin'): ?>
-                    <form action="../cadastro-carta/cadastro-carta.php" method="post">
-                        <button class="botao-opcao" type="submit">Cadastrar Cartas</button>
+                    <form action="../administrar-carta/administrar-carta.php" method="post">
+                        <button class="botao-opcao" type="submit">Administrar Cartas</button>
                     </form>
                 <?php endif; ?>
                 <form action="../login/login.php" method="post">
