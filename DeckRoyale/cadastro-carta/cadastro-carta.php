@@ -29,7 +29,7 @@ $sucesso = $_GET['sucesso'] ?? '';
                     <p class="mensagem-erro">Preencha todos os campos corretamente.</p>
                 <?php endif; ?>
 
-                <?php if ($sucesso === '1'): ?>
+                <?php if ($sucesso === 'ok'): ?>
                     <p class="mensagem-sucesso">Carta cadastrada com sucesso!</p>
                 <?php endif; ?>
 

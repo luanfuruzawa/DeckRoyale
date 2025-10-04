@@ -26,7 +26,7 @@ $apagar = $_GET['apagar'] ?? '';
                 <?php if ($erro === 'vazio'): ?>
                     <p class="mensagem-erro">Preencha todos os campos corretamente.</p>
                 <?php endif; ?>
-                <?php if ($sucesso === '1'): ?>
+                <?php if ($sucesso === 'ok'): ?>
                     <p class="mensagem-sucesso">Carta alterada com sucesso!</p>
                 <?php endif; ?>
                 <?php if ($erro === 'sem_id'): ?>

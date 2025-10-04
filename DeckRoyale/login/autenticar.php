@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/bd/conexao-bd.php';
+require_once __DIR__ . '../../conexao-bd/conexao-bd.php';
 require_once __DIR__ . '/bd/usuarioRepositorio.php';
 require_once __DIR__ . '/bd/usuario.php';
 

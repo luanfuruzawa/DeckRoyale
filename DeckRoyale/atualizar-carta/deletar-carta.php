@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . "/bd/conexao-bd.php";
-require __DIR__ . "/bd/carta.php";
+require_once __DIR__ . '../../conexao-bd/conexao-bd.php';
+require_once __DIR__ . '../../carta/carta.php';
 require __DIR__ . "/bd/CartaRepositorio.php";
 
 if (!isset($_POST['id']) || empty(trim($_POST['id']))) {

@@ -29,18 +29,6 @@
         return $carta ? password_verify($caminhoCarta, $carta->getCaminhoCarta()) : false;
 
         }
-
-        public function salvar(Carta $carta): void
-        {
-            $sql = "INSERT INTO carta (id, custo, srcImagem, raridade) VALUES (?, ?, ?, ?)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindValue(1, $carta->getId());
-            $stmt->bindValue(2, $carta->getCustoCarta());
-            $stmt->bindValue(3, $carta->getCaminhoCarta());
-            $stmt->bindValue(4, $carta->getRaridadeCarta());
-            $stmt->execute();
-        }
-
         public function alterar(Carta $carta): void
         {
             $sql = "UPDATE carta SET custo = ?, srcImagem = ?, raridade = ? WHERE id = ?";
