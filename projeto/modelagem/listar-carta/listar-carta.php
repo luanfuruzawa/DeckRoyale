@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header("Location: ../login/login.php");
+    header("Location: ../login-usuario/login.php");
     exit;
 }
 require __DIR__ . "../../conexao-bd/conexao-bd.php";

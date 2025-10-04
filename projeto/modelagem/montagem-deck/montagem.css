@@ -8,7 +8,7 @@ body {
 }
 
 .deck {
-    background-image: url("../imgFundo/fundo-section.jpg"); 
+    background-image: url("img/fundo_deck.png"); 
     display: grid;
     margin-top: 50px;
     margin-left: 750px;
@@ -23,7 +23,7 @@ body {
 }
 
 .container-deck {
-    background-image: url("img/fundo-section.jpg");
+    background-image: url("../imgFundo/fundo-section.jpg");
     position: relative;
     width: 1850px;
     min-height: 400px;

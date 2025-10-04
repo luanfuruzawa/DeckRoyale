@@ -1,12 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('Location: ../login/login.php');
-    exit;
-}
-$usuarioLogado = $_SESSION['usuario'] ?? null;
-if (!$usuarioLogado) {
-    header('Location: ../login/login.php');
+    header('Location: ../login-usuario/login.php');
     exit;
 }
 function pode(string $perm): bool
@@ -34,14 +29,14 @@ function pode(string $perm): bool
                 <h1 class="titulo">Deck Royale</h1>
             </div>
             <div class="opcoes-menu">
-                <a class="botao-opcao" href="../montagem/montagem.php">Montar Deck</a>
+                <a class="botao-opcao" href="../montagem-deck/montagem.php">Montar Deck</a>
                 <a class="botao-opcao" href="../pesquisa/pesquisa-deck.html">Meus Decks</a>
                 <?php if (isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'Admin'): ?>
                     <form action="../administrar-carta/administrar-carta.php" method="post">
                         <button class="botao-opcao" type="submit">Administrar Cartas</button>
                     </form>
                 <?php endif; ?>
-                <form action="../login/login.php" method="post">
+                <form action="../login-usuario/login.php" method="post">
                     <button class="botao-sair" type="submit">Sair</button>
                 </form>
             </div>

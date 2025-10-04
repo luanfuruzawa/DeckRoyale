@@ -21,7 +21,7 @@ $erro = $_GET['erro'] ?? '';
                             <?php echo htmlspecialchars($usuarioLogado); ?>
                         </strong></p>
 
-                    <form action="logout.php" method="post">
+                    <form action="../logout-usuario/logout.php" method="post">
                         <button type="submit" id="botao-sair">Sair</button>
                     </form>
         <?php else: ?>
@@ -50,7 +50,7 @@ $erro = $_GET['erro'] ?? '';
                             </form>
                         </div>
                         <div class="ir-para-login">
-                            Já tem conta? <a id="link-login" href="../login/login.php">Clique aqui</a>
+                            Já tem conta? <a id="link-login" href="../login-usuario/login.php">Clique aqui</a>
                         </div>
                     </div>
         <?php endif; ?>

@@ -17,7 +17,7 @@ $erro = $_GET['erro'] ?? '';
     <main>
         <?php if ($usuarioLogado): ?>
             <p id="texto-logout">Você já está logado como <?php echo htmlspecialchars($usuarioLogado); ?></br>quer fazer logout?</p>
-                <form action="logout.php" method="post">
+                <form action="../logout-usuario/logout.php" method="post">
                     <button type="submit" id="botao-sair">Sair</button>
                     </form>
             <?php else: ?>

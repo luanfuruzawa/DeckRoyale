@@ -13,7 +13,7 @@
 
     session_destroy();
 
-    header("Location: cadastro.php");
+    header("Location: ../cadastro-usuario/cadastro.php");
     exit;
 
 
