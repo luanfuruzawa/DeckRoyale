@@ -29,7 +29,7 @@ CREATE TABLE `usuario` (
   `email` varchar(50) NOT NULL,
   `senha` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Murilo','User','murilo@gmail.com','1234'),(4,'Matheus','User','marheus@gmail.com','$2y$10$LRuFKo77PBifnPCZfv3SB.5yr.I174E80Lyb/WNj4YHLaMpP/bMlm'),(5,'Luan','Admin','luan@gmail.com','$2y$10$zWR6g7meegMeYPgvO3kjMOaU4eqwYtZ4aG9DbXOTOgHwsyYJrZdY2');
+INSERT INTO `usuario` VALUES (1,'Murilo','User','murilo@gmail.com','1234'),(5,'Luan','Admin','luan@gmail.com','$2y$10$zWR6g7meegMeYPgvO3kjMOaU4eqwYtZ4aG9DbXOTOgHwsyYJrZdY2'),(7,'Matheus','Admin','marheus@gmail.com','$2y$10$xFOOzMFuGwGFsSppFahu9uJE63GQ4eJzRnSVc06sGX1xmdcXzl/c6');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-02 23:04:41
+-- Dump completed on 2025-10-03 22:41:08
