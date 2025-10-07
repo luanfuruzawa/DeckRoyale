@@ -39,8 +39,6 @@ $erro = $_GET['erro'] ?? '';
                 </div>
                 <div class="campos-login">
                     <form action="autenticar.php" method="post">
-                        <input type="text" id="nome" name="nome" placeholder="Nome:">
-                        <br><br>
                         <input type="text" id="email" name="email" placeholder="Email:">
                         <br><br>
                         <input type="password" id="senha" name="senha" placeholder="Senha:">
