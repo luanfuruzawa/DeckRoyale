@@ -10,7 +10,7 @@ class UsuarioRepositorio
 
     private function formarObjeto(array $dados): Usuario
     {
-        return new Usuario((int) $dados['id'],  $dados['email'], $dados['perfil'], $dados['nome'], $dados['senha'] );
+        return new Usuario((int) $dados['id'],  $dados['email'], $dados['senha'], $dados['nome'], $dados['perfil'] );
     }
 
     public function buscarPorId(string $id): ?Usuario

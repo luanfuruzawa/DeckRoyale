@@ -41,7 +41,7 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
             <form action="../administrar-carta/administrar-carta.php">
             </form>
             <h1 class="titulo">Cartas Cadastradas</h1>
-            <div class="tabela-cartas">
+            <div class="tabela">
                 <table>
                     <thead>
                         <tr>

@@ -22,7 +22,7 @@ if (!$cartaExistente) {
 }
 
 $carta = new Carta($id, $custoCarta, $caminhoCarta, $raridadeCarta);
-$repo->alterar($carta); // Executa sem if
+$repo->alterar($carta); 
 
 header('Location: atualizar-carta.php?sucesso=ok');
 exit;

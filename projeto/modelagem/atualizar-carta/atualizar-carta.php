@@ -55,7 +55,7 @@ $apagar = $_GET['apagar'] ?? '';
                         <button type="submit">Alterar Carta</button>
                     </form>
                 </form>
-                <div class="deletar-carta">
+                <div class="deletar">
                     <h1 class="titulo">Apagar Carta</h1>
                     <form action="deletar-carta.php" method="post">
                         <?php if ($apagar === 'ok'): ?>

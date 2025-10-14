@@ -38,24 +38,27 @@ $apagar = $_GET['apagar'] ?? '';
                     <p class="mensagem-erro">Erro: informe o ID (nome) da carta para deletar.</p>
                 <?php endif; ?>
 
-                <form action="alterarCarta.php" method="post">
+                <form action="alterarUsuario.php" method="post">
 
                     <input type="number" id="id" name="id" placeholder="Id do usuario para alterar: ">
                     <br><br>
 
+                    <input type="text" id="nome" name="nome" placeholder="Nome: ">
+                    <br><br>
+                    
                     <input type="text" id="email" name="email" placeholder="Email: ">
                     <br><br>
 
-                    <input type="text" id="user" name="user" placeholder="User: ">
+                    <input type="text" id="perfil" name="perfil" placeholder="User: ">
                     <br><br>
 
-                    <input type="text" id="senha-carta" name="senha" placeholder="Senha: ">
+                    <input type="text" id="senha" name="senha" placeholder="Senha: ">
                     <br><br>
                     <form action="alterarUsuario.php" method="post">
                         <button type="submit">Alterar Usuario</button>
                     </form>
                 </form>
-                <div class="deletar-carta">
+                <div class="deletar">
                     <h1 class="titulo">Apagar Usuario</h1>
                     <form action="deletar-usuario.php" method="post">
                         <?php if ($apagar === 'ok'): ?>

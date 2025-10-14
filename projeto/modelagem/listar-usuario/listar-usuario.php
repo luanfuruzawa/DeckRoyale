@@ -17,7 +17,7 @@ $totalUsuarios = $usuarioRepositorio->contarTodos();
 
 $paginacao = new Paginacao($totalUsuarios, $climite, $paginaAtual);
 
-$usuarios1 = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao->getOffset());
+$usuarios = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao->getOffset());
 ?>
 
 <!DOCTYPE html>
@@ -40,15 +40,14 @@ $usuarios1 = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $pagin
         <div class="formulario">
             <form action="../administrar-usuario/administrar-usuario.php">
             </form>
-            <h1 class="titulo">Cartas Cadastradas</h1>
-            <div class="tabela-cartas">
+            <h1 class="titulo">Usuarios Cadastradas</h1>
+            <div class="tabela">
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Senha</th>
                             <th>Perfil</th>
                         </tr>
                     </thead>
@@ -58,7 +57,6 @@ $usuarios1 = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $pagin
                                 <td><?= htmlspecialchars($usuario->getId()) ?></td>
                                 <td><?= htmlspecialchars($usuario->getNome()) ?></td>
                                 <td><?= htmlspecialchars($usuario->getEmail()) ?></td>
-                                <td><?= htmlspecialchars($usuario->getSenha()) ?></td>
                                 <td><?= htmlspecialchars($usuario->getPerfil()) ?></td>
                             </tr>
                         <?php endforeach; ?>
