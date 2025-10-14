@@ -5,19 +5,19 @@ if (!isset($_SESSION['usuario'])) {
     exit;
 }
 require __DIR__ . "../../conexao-bd/conexao-bd.php";
-require __DIR__ . "../../carta/carta.php";
-require __DIR__ . "/bd/CartaRepositorio.php";
+require __DIR__ . "../../usuario/usuario.php";
+require __DIR__ . "/bd/UsuarioRepositorio.php";
 require __DIR__ . "../../paginacao/paginacao.php";
 
 $climite = 15;
 $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 
-$cartaRepositorio = new CartaRepositorio($pdo);
-$totalCartas = $cartaRepositorio->contarTodos();
+$usuarioRepositorio = new UsuarioRepositorio($pdo);
+$totalUsuarios = $usuarioRepositorio->contarTodos();
 
-$paginacao = new Paginacao($totalCartas, $climite, $paginaAtual);
+$paginacao = new Paginacao($totalUsuarios, $climite, $paginaAtual);
 
-$cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao->getOffset());
+$usuarios1 = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao->getOffset());
 ?>
 
 <!DOCTYPE html>
@@ -29,35 +29,37 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../listar-css/listar.css" />
-    <title>Listar Cartas</title>
+    <title>Listar Usuario</title>
 </head>
 
 <body>
-    <form action="../administrar-carta/administrar-carta.php">
+    <form action="../administrar-usuario/administrar-usuario.php">
         <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
     <div class="container-formulario">
         <div class="formulario">
-            <form action="../administrar-carta/administrar-carta.php">
+            <form action="../administrar-usuario/administrar-usuario.php">
             </form>
             <h1 class="titulo">Cartas Cadastradas</h1>
             <div class="tabela-cartas">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID (Nome)</th>
-                            <th>Custo</th>
-                            <th>Caminho da Imagem</th>
-                            <th>Raridade</th>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Perfil</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($cartas as $carta): ?>
+                        <?php foreach ($usuarios as $usuario): ?>
                             <tr>
-                                <td><?= htmlspecialchars($carta->getId()) ?></td>
-                                <td><?= htmlspecialchars($carta->getCustoCarta()) ?></td>
-                                <td><?= htmlspecialchars($carta->getCaminhoCarta()) ?></td>
-                                <td><?= htmlspecialchars($carta->getRaridadeCarta()) ?></td>
+                                <td><?= htmlspecialchars($usuario->getId()) ?></td>
+                                <td><?= htmlspecialchars($usuario->getNome()) ?></td>
+                                <td><?= htmlspecialchars($usuario->getEmail()) ?></td>
+                                <td><?= htmlspecialchars($usuario->getSenha()) ?></td>
+                                <td><?= htmlspecialchars($usuario->getPerfil()) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

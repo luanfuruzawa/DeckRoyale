@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '../conexao-bd/conexao-bd.php';
 require_once __DIR__ . '/bd/UsuarioRepositorio.php';
-require_once __DIR__ . '/bd/Usuario.php';
+require_once __DIR__ . '../../usuario/usuario.php';
 
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';

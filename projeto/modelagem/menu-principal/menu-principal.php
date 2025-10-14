@@ -35,6 +35,9 @@ function pode(string $perm): bool
                     <form action="../administrar-carta/administrar-carta.php" method="post">
                         <button class="botao-opcao" type="submit">Administrar Cartas</button>
                     </form>
+                    <form action="../administrar-usuario/administrar-usuario.php" method="post">
+                        <button class="botao-opcao" type="submit">Administrar Usuario</button>
+                    </form>
                 <?php endif; ?>
                 <form action="../login-usuario/login.php" method="post">
                     <button class="botao-sair" type="submit">Sair</button>

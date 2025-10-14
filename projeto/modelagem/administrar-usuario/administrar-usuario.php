@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -25,16 +25,12 @@ if (!isset($_SESSION['usuario'])) {
 
     <section class = "container-formulario">
         <div class = "formulario">
-            <form action="../cadastro-carta/cadastro-carta.php" method="post">
-                <button class="botao-opcao" type="submit">Cadastrar Cartas</button>
+            <form action="../listar-usuario/listar-usuario.php" method="post">
+                <button class="botao-opcao" type="submit">Listar Usuario</button>
             </form>
             <br><br>
-            <form action="../listar-carta/listar-carta.php" method="post">
-                <button class="botao-opcao" type="submit">Listar Cartas</button>
-            </form>
-            <br><br>
-            <form action="../atualizar-carta/atualizar-carta.php" method="post">
-                <button class="botao-opcao" type="submit">Atualizar Cartas</button>
+            <form action="../atualizar-usuario/atualizar-usuario.php" method="post">
+                <button class="botao-opcao" type="submit">Atualizar Usuário</button>
             </form>
 
         </div>
