@@ -7,9 +7,8 @@ $id = trim($_POST['id'] ?? '');
 $perfil = $_POST['perfil'] ?? '';
 $nome = $_POST['nome'] ?? '';
 $email = $_POST['email'] ?? '';
-$senha = $_POST['senha'] ?? '';
 
-if ($perfil === '' || $nome === '' || $email === '' || $senha === '') {
+if ($perfil === '' || $nome === '' || $email === '') {
     header('Location: atualizar-usuario.php?erro=vazio');
     exit;
 }
@@ -22,9 +21,11 @@ if (!$usuarioExistente) {
     exit;
 }
 
-$usuario = new Usuario($id, $nome, $email, $senha, $perfil);
-$repo->alterar($usuario); 
+$senhaAtual = $usuarioExistente->getSenha();
+
+$usuario = new Usuario($id, $email, $senhaAtual, $nome, $perfil);
+
+$repo->alterar($usuario);
 
 header('Location: atualizar-usuario.php?sucesso=ok');
 exit;
-?>

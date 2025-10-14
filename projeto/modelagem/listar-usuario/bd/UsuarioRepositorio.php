@@ -55,6 +55,7 @@ class UsuarioRepositorio
     return array_map(fn($dados) => $this->formarObjeto($dados), $resultados);
 }
 
+
 }
 
 ?>

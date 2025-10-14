@@ -52,8 +52,6 @@ $apagar = $_GET['apagar'] ?? '';
                     <input type="text" id="perfil" name="perfil" placeholder="User: ">
                     <br><br>
 
-                    <input type="text" id="senha" name="senha" placeholder="Senha: ">
-                    <br><br>
                     <form action="alterarUsuario.php" method="post">
                         <button type="submit">Alterar Usuario</button>
                     </form>
@@ -62,7 +60,7 @@ $apagar = $_GET['apagar'] ?? '';
                     <h1 class="titulo">Apagar Usuario</h1>
                     <form action="deletar-usuario.php" method="post">
                         <?php if ($apagar === 'ok'): ?>
-                            <p class="mensagem-sucesso">Carta apagada com sucesso!</p>
+                            <p class="mensagem-sucesso">Usuario apagado com sucesso!</p>
                         <?php endif; ?>
                         <input type="text" name="id" placeholder="ID do usuário para deletar">
                         <br><br>
