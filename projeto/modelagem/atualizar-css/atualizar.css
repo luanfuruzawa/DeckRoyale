@@ -65,8 +65,42 @@ button {
     margin-left: 725px;  
     gap: 40px;                
     padding: 40px;
-    margin-top: 80px;
+    margin-top: -80px;
 }
 p{
     color: rgb(255, 217, 0);
+}
+ select#raridade-carta {
+    width: 100% !important;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    border: 1px solid #aaa !important;
+    font-size: 16px !important;
+    background-color: #f9f9f9 !important;
+}
+
+input[type="file"]#imagem-carta {
+    padding: 5px !important;
+    border-radius: 5px !important;
+    border: 1px solid #aaa !important;
+    background-color: #f9f9f9 !important;
+    cursor: pointer !important;
+}
+
+label {
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    color: rgb(255, 217, 0);
+    margin-bottom: 5px; 
+}
+ 
+input,
+select,
+button {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: block;
+    width: 100%;
+    max-width: 350px;
 }

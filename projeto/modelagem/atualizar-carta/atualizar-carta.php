@@ -38,22 +38,30 @@ $apagar = $_GET['apagar'] ?? '';
                     <p class="mensagem-erro">Erro: informe o ID (nome) da carta para deletar.</p>
                 <?php endif; ?>
 
-                <form action="alterarCarta.php" method="post">
+                <form action="alterarCarta.php" method="post" enctype="multipart/form-data">
 
                     <input type="text" id="id" name="id" placeholder="Nome Carta para alterar: ">
                     <br><br>
 
                     <input type="number" id="custo" name="custo" placeholder="Custo Elixir">
                     <br><br>
-
-                    <input type="text" id="caminho-carta" name="caminho-carta" placeholder="Caminho Carta">
+ 
+                    <input type="file" id="imagem-carta" name="imagem-carta" accept="image/*">
+                    <br><br>
+ 
+                    <select name="raridade-carta" id="raridade-carta">
+                        <option value="">Selecione a raridade</option>
+                        <option value="campeao">Campeão</option>
+                        <option value="lendaria">Lendária</option>
+                        <option value="epica">Épica</option>
+                        <option value="rara">Rara</option>
+                        <option value="comum">Comum</option>
+                    </select>
                     <br><br>
 
-                    <input type="text" id="raridade-carta" name="raridade-carta" placeholder="Raridade Carta">
-                    <br><br>
-                    <form action="alterarCarta.php" method="post">
-                        <button type="submit">Alterar Carta</button>
-                    </form>
+                    <button type="submit">Alterar Carta</button>
+                </form>
+
                 </form>
                 <div class="deletar">
                     <h1 class="titulo">Apagar Carta</h1>

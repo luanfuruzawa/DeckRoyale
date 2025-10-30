@@ -78,38 +78,11 @@ h2 {
     color: rgb(255, 217, 0);
 }
 
-#comuns {
-    font-family: fonteClash;
-    font-size: 20px;
-    color: blue;
-}
 
-#raras {
-    font-family: fonteClash;
-    font-size: 20px;
-    color: rgb(200, 255, 0);
-}
-
-#epicas {
-    font-family: fonteClash;
-    font-size: 20px;
-    color: rgb(98, 0, 255);
-}
-
-#campeoes {
+.raridade h2{
     font-family: fonteClash;
     font-size: 20px;
     color: white;
-}
-
-#lendarias {
-    font-family: fonteClash;
-    font-size: 20px;
-}
-
-#usadas {
-    font-family: fonteClash;
-    font-size: 20px;
 }
 
 p {

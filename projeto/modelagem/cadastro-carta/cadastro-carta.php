@@ -14,6 +14,7 @@ $sucesso = $_GET['sucesso'] ?? '';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="cadastro-carta.css">
+    <link rel="stylesheet" href="estilo-form.css"> <!-- CSS separado para combo box e input de imagem -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Cadastro de Carta</title>
 </head>
@@ -38,21 +39,28 @@ $sucesso = $_GET['sucesso'] ?? '';
                     <p class="mensagem-sucesso">Carta cadastrada com sucesso!</p>
                 <?php endif; ?>
 
-                <form action="inserirCarta.php" method="post">
-                    <input type="text" name="id" placeholder="Nome: ">
+                <form action="inserirCarta.php" method="post" enctype="multipart/form-data">
+                    <input type="text" name="id" placeholder="Nome da Carta:">
                     <br><br>
-                    <input type="number" name="custo" placeholder="Custo Elixir: ">
+                    <input type="number" name="custo" placeholder="Custo Elixir:">
                     <br><br>
-                    <input type="text" name="caminho-carta" placeholder="Caminho Carta: ">
+                    <label class="categoria" for="imagem-carta">Escolha a imagem da carta:</label>
+                    <input type="file" name="imagem-carta" id="imagem-carta" accept="image/*">
                     <br><br>
-                    <input type="text" name="raridade-carta" placeholder="Raridade Carta: ">
+                    <label class="categoria" for="raridade-carta">Raridade da Carta:</label>
+                    <select name="raridade-carta" id="raridade-carta">
+                        <option value="">Selecione...</option>
+                        <option value="comum">Comum</option>
+                        <option value="rara">Rara</option>
+                        <option value="epica">Épica</option>
+                        <option value="lendaria">Lendária</option>
+                        <option value="campeao">Campeão</option>
+                    </select>
                     <br><br>
-
                     <button type="submit">Cadastrar Carta</button>
                 </form>
             </div>
         </section>
     </main>
 </body>
-
 </html>
