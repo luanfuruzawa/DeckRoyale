@@ -24,7 +24,7 @@
     //https://www.php.net/manual/en/function.pathinfo.php para manipulação de caminho  de arquivos
     //https://www.php.net/manual/en/function.mkdir.php para criação de pastas e permissões de edição
     if ($imagemCarta && $imagemCarta['tmp_name']) {
-        $pasta = __DIR__ . '/../img/' . strtolower($raridadeCarta) . '/';
+        $pasta = __DIR__ . '/../montagem-deck/img/' . strtolower($raridadeCarta) . '/';
         if (!is_dir($pasta)) {
             mkdir($pasta, 0777, true);
         }
