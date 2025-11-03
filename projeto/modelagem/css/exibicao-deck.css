@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'fonteClash';
+    src: url('../fonte/You Blockhead.ttf');
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    background: linear-gradient(45deg, #29c2e3, #0e4378, #0e4378);
+    font-family: fonteClash;
+}
+
+.informacoes-deck {
+    background-image: url("../img/fundo-section.jpg");
+    border-radius: 10px;
+    border: 2px solid #fff;
+    display: flex;
+    align-items: center;
+    height: 90vh;
+    gap: 100px;
+    margin-top: 10px;
+}
+
+.cartas-deck {
+    width: 960px;
+    height: 612px;
+    margin-left: 200px;
+}
+
+.cartas-deck img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.descricao-deck {
+    width: 350px;
+    height: 367px;
+    background-color: rgb(139, 139, 139);
+    border-radius: 40px;
+}
+
+.descricao-deck h1 {
+    margin-left: 50px;
+}
+
+.opcoes-deck {
+    width: 350px;
+    height: 225px;
+    background-color: rgb(139, 139, 139);
+    border-radius: 40px;
+    margin-top: 20px;
+}
+
+#botao-voltar {
+     margin-left: 10px;
+     margin-top: 10px;
+    background-color: rgb(255, 217, 0);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 0;
+    font-family: fonteClash;
+}
+
+.parte-cima {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.titulo {
+    margin-left: 30px;
+    font-family: fonteClash;
+    font-size: 30px;
+    color: rgb(255, 217, 0);
+}
+
+#botao-compartilhar, #botao-exportar {
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    background-color: rgb(255, 217, 0);;
+    border: 8px solid rgb(255, 217, 0);;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-left: 20px;
+    font-family: fonteClash;
+}

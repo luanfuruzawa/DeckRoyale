@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['usuario'])) {
-    header('Location: ../login-usuario/login.php');
+    header('Location: ../usuarios/login-usuario/login.php');
     exit;
 }
 function pode(string $perm): bool
@@ -15,7 +15,7 @@ function pode(string $perm): bool
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="menu-inicial.css">
+    <link rel="stylesheet" href="../css/menu-inicial.css">
     <!-- https://fontawesome.com/icons/house?s=solid link do icone casa-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Menu Principal</title>
@@ -29,17 +29,17 @@ function pode(string $perm): bool
                 <h1 class="titulo">Deck Royale</h1>
             </div>
             <div class="opcoes-menu">
-                <a class="botao-opcao" href="../montagem-deck/montagem.php">Montar Deck</a>
-                <a class="botao-opcao" href="../pesquisa/pesquisa-deck.html">Meus Decks</a>
+                <a class="botao-opcao" href="../decks/montagem-deck/montagem.php">Montar Deck</a>
+                <a class="botao-opcao" href="../decks/pesquisa/pesquisa-deck.html">Meus Decks</a>
                 <?php if (isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'Admin'): ?>
-                    <form action="../administrar-carta/administrar-carta.php" method="post">
+                    <form action="../administrar/administrar-carta.php" method="post">
                         <button class="botao-opcao" type="submit">Administrar Cartas</button>
                     </form>
-                    <form action="../administrar-usuario/administrar-usuario.php" method="post">
+                    <form action="../administrar/administrar-usuario.php" method="post">
                         <button class="botao-opcao" type="submit">Administrar Usuario</button>
                     </form>
                 <?php endif; ?>
-                <form action="../login-usuario/login.php" method="post">
+                <form action="../usuarios/login-usuario/login.php" method="post">
                     <button class="botao-sair" type="submit">Sair</button>
                 </form>
             </div>
@@ -52,7 +52,7 @@ function pode(string $perm): bool
                 os decks mais populares do meta e descobrir novas combinações de cartas para surpreender seus
                 adversários.
             </h1>
-            <img class="imagem-royale" src="img/royale.png" alt="royale">
+            <img class="imagem-royale" src="../img/clash-royale-logo.png" alt="royale">
 
         </div>
     </section>
