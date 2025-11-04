@@ -22,7 +22,7 @@ if ($repo->buscarPorId($id)) {
 //https://www.php.net/manual/en/features.file-upload.php mais referencias sobre manipulação de arquivos
 //https://www.php.net/manual/en/function.pathinfo.php para manipulação de caminho  de arquivos
 //https://www.php.net/manual/en/function.mkdir.php para criação de pastas e permissões de edição
-$pasta = __DIR__ . '/../src/uploads/' . strtolower($raridadeCarta) . '/';
+$pasta = __DIR__ . '../../../src/uploads/' . strtolower($raridadeCarta) . '/';
 if (!is_dir($pasta)) {
     mkdir($pasta, 0777, true);
 }
