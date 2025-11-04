@@ -49,6 +49,8 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
                             <th>Custo</th>
                             <th>Caminho da Imagem</th>
                             <th>Raridade</th>
+                            <th> </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +60,20 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
                                 <td><?= htmlspecialchars($carta->getCustoCarta()) ?></td>
                                 <td><?= htmlspecialchars($carta->getCaminhoCarta()) ?></td>
                                 <td><?= htmlspecialchars($carta->getRaridadeCarta()) ?></td>
+                                
+                                <td>
+                                    <button class="botao-alterar">
+                                        Editar
+                                    </button>
+                                    
+                                </td>
+                                <td>
+                                    <form action="../atualizar-carta/deletar-carta.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $carta->getId() ?>">
+                                    <input type="submit" class="botao-alterar" value="Excluir">
+                                    </form>
+                                </td>
+                                
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

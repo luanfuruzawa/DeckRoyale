@@ -14,7 +14,7 @@ $id = trim($_POST['id']);
 $cartaRepositorio = new CartaRepositorio($pdo);
 if ($cartaRepositorio->deletar($id)) {
     echo "Carta alterada: {$id}\n";
-    header('Location: atualizar-carta.php?apagar=ok');
+    header('Location: listar-carta/listar-carta.php');
     exit;
 }
 
