@@ -1,12 +1,24 @@
 <?php
+require_once __DIR__ . '/../../src/conexao-bd.php';
+require_once __DIR__ . '/../../src/Repositorio/CartaRepositorio.php';
+require_once __DIR__ . '/../../src/Modelo/carta.php';
+
 session_start();
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../usuarios/login-usuario/login.php");
     exit;
 }
-$erro = $_GET['erro'] ?? '';
-$sucesso = $_GET['sucesso'] ?? '';
-$apagar = $_GET['apagar'] ?? '';
+$erro = $_POST['erro'] ?? '';
+$sucesso = $_POST['sucesso'] ?? '';
+$apagar = $_POST['apagar'] ?? '';
+
+$carta = null;
+
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $repo = new CartaRepositorio($pdo);
+    $carta = $repo->buscarPorId($id);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,22 +52,31 @@ $apagar = $_GET['apagar'] ?? '';
 
                 <form action="alterarCarta.php" method="post" enctype="multipart/form-data">
 
-                    <input type="text" id="id" name="id" placeholder="Nome Carta para alterar: ">
+                    <input type="text" id="id" name="id" placeholder="Nome Carta para alterar:"
+                        value="<?= htmlspecialchars($carta?->getId() ?? '') ?>" readonly>
                     <br><br>
 
-                    <input type="number" id="custo" name="custo" placeholder="Custo Elixir">
+                    <input type="number" id="custo" name="custo" placeholder="Custo Elixir"
+                        value="<?= htmlspecialchars($carta?->getCustoCarta() ?? '') ?>">
                     <br><br>
- 
+
                     <input type="file" id="imagem-carta" name="imagem-carta" accept="image/*">
+                    <?php if ($carta && $carta->getCaminhoCarta()): ?>
+                        <br>
+                        <img src="<?= htmlspecialchars($carta->getCaminhoCarta()) ?>" alt="Imagem da carta" width="100">
+                    <?php endif; ?>
                     <br><br>
- 
+
                     <select name="raridade-carta" id="raridade-carta">
                         <option value="">Selecione a raridade</option>
-                        <option value="campeao">Campeão</option>
-                        <option value="lendaria">Lendária</option>
-                        <option value="epica">Épica</option>
-                        <option value="rara">Rara</option>
-                        <option value="comum">Comum</option>
+                        <option value="campeao" <?= ($carta && $carta->getRaridadeCarta() === 'campeao') ? 'selected' : '' ?>>Campeão</option>
+                        <option value="lendaria" <?= ($carta && $carta->getRaridadeCarta() === 'lendaria') ? 'selected' : '' ?>>Lendária</option>
+                        <option value="epica" <?= ($carta && $carta->getRaridadeCarta() === 'epica') ? 'selected' : '' ?>>
+                            Épica</option>
+                        <option value="rara" <?= ($carta && $carta->getRaridadeCarta() === 'rara') ? 'selected' : '' ?>>
+                            Rara</option>
+                        <option value="comum" <?= ($carta && $carta->getRaridadeCarta() === 'comum') ? 'selected' : '' ?>>
+                            Comum</option>
                     </select>
                     <br><br>
 
@@ -63,18 +84,7 @@ $apagar = $_GET['apagar'] ?? '';
                 </form>
 
                 </form>
-                <div class="deletar">
-                    <h1 class="titulo">Apagar Carta</h1>
-                    <form action="deletar-carta.php" method="post">
-                        <?php if ($apagar === 'ok'): ?>
-                            <p class="mensagem-sucesso">Carta apagada com sucesso!</p>
-                        <?php endif; ?>
-                        <input type="text" name="id" placeholder="Nome da Carta para deletar">
-                        <br><br>
-                        <button type="submit">Deletar Carta</button>
-                    </form>
-                </div>
-            </div>
+
         </container>
     </main>
 </body>

@@ -60,20 +60,20 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
                                 <td><?= htmlspecialchars($carta->getCustoCarta()) ?></td>
                                 <td><?= htmlspecialchars($carta->getCaminhoCarta()) ?></td>
                                 <td><?= htmlspecialchars($carta->getRaridadeCarta()) ?></td>
-                                
+
                                 <td>
-                                    <button class="botao-alterar">
-                                        Editar
-                                    </button>
-                                    
+                                    <form action="../atualizar-carta/atualizar-carta.php" method="POST">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($carta->getId()) ?>">
+                                        <button type="submit" class="botao-alterar">Editar</button>
+                                    </form>
                                 </td>
                                 <td>
                                     <form action="../atualizar-carta/deletar-carta.php" method="post">
-                                    <input type="hidden" name="id" value="<?= $carta->getId() ?>">
-                                    <input type="submit" class="botao-alterar" value="Excluir">
+                                        <input type="hidden" name="id" value="<?= $carta->getId() ?>">
+                                        <input type="submit" class="botao-alterar" value="Excluir">
                                     </form>
                                 </td>
-                                
+
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
