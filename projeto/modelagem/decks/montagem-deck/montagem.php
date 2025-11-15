@@ -49,15 +49,15 @@ foreach ($cartas as $carta) {
         <div class="selecao-cartas">
             <div class="todas-cartas">
                 <div class="raridade">
-                <?php foreach ($categorias as $raridade => $lista): ?>
-                    <h2><?= htmlspecialchars($raridade) ?></h2>
-                    <?php foreach ($lista as $carta): ?>
-                        <img class="carta" data-custo="<?= htmlspecialchars($carta['custo']) ?>"
-                            id="<?= htmlspecialchars(pathinfo($carta['srcImagem'], PATHINFO_FILENAME)) ?>"
-                            src="../../src/uploads/<?= strtolower($carta['raridade']) ?>/<?= htmlspecialchars($carta['srcImagem']) ?>"
-                            draggable="true" alt="<?= htmlspecialchars($carta['id']) ?>">
+                    <?php foreach ($categorias as $raridade => $lista): ?>
+                        <h2><?= htmlspecialchars($raridade) ?></h2>
+                        <?php foreach ($lista as $carta): ?>
+                            <img class="carta" data-custo="<?= htmlspecialchars($carta['custo']) ?>"
+                                id="<?= htmlspecialchars(pathinfo($carta['srcImagem'], PATHINFO_FILENAME)) ?>"
+                                src="../../src/uploads/<?= strtolower($carta['raridade']) ?>/<?= htmlspecialchars($carta['srcImagem']) ?>"
+                                draggable="true" alt="<?= htmlspecialchars($carta['id']) ?>">
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
-                <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -65,6 +65,22 @@ foreach ($cartas as $carta) {
 
     <button id="botao-salvar">Salvar</button>
     <script src="montagem.js"></script>
+
+    <div class="menu-salvar">
+        <div class="campos-menu-salvar">
+            <form action="">
+                <label for="nome-deck">Nome do Deck:</label>
+                </br></br>
+                <input type="text" name="id" placeholder="Nome do Deck:">
+                </br></br>
+                <button type="submit" id="botao-enviar">Salvar</button>
+
+            </form>
+
+
+        </div>
+
+    </div>
 </body>
 
 </html>

@@ -69,3 +69,26 @@ document.addEventListener('dragover', function (e) {
         window.scrollBy(0, velocidadeScroll);
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('botao-salvar');
+    const menu = document.querySelector('.menu-salvar');
+
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function (e) {
+        menu.classList.toggle('show');
+    });
+
+    // opcional: fechar ao clicar fora
+    document.addEventListener('click', function (e) {
+        if (!menu.classList.contains('show')) return;
+        if (e.target === btn || menu.contains(e.target)) return;
+        menu.classList.remove('show');
+    });
+
+    // opcional: fechar com ESC
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') menu.classList.remove('show');
+    });
+});
