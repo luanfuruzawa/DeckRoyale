@@ -27,7 +27,7 @@ body {
     position: relative;
     width: 1850px;
     min-height: 400px;
-    margin: 40px 20px;
+    margin: 40px -20px; 
     border-radius: 10px;
     border: 2px solid #fff;
     margin-left: 0px;
@@ -59,11 +59,7 @@ body {
     width: 75px;
     height: 100px;
 }
-
-.i2tb {
-    height: 75px;
-    width: 100px;
-}
+ 
 
 h2 {
     color: rgb(221, 190, 14);
@@ -72,6 +68,7 @@ h2 {
 
 #titulo {
     margin-top: -40px;
+    margin-bottom: -40px;
     margin-left: 75px;
     font-size: 30px;
     font-family: fonteClash;
@@ -96,10 +93,10 @@ p {
 #botao-salvar{
     font-family: fonteClash;
     position: absolute;
-    top: 41px;
+    top: 56px;
     left: 16px;
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 50px;
     background-color: rgb(255, 217, 0);
     color: black;
     border: none;

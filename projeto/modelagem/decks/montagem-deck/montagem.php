@@ -52,7 +52,9 @@ foreach ($cartas as $carta) {
                     <?php foreach ($categorias as $raridade => $lista): ?>
                         <h2><?= htmlspecialchars($raridade) ?></h2>
                         <?php foreach ($lista as $carta): ?>
-                            <img class="carta" data-custo="<?= htmlspecialchars($carta['custo']) ?>"
+                            <img class="carta"
+                                data-custo="<?= htmlspecialchars($carta['custo']) ?>"
+                                data-id="<?= htmlspecialchars($carta['id']) ?>"
                                 id="<?= htmlspecialchars(pathinfo($carta['srcImagem'], PATHINFO_FILENAME)) ?>"
                                 src="../../src/uploads/<?= strtolower($carta['raridade']) ?>/<?= htmlspecialchars($carta['srcImagem']) ?>"
                                 draggable="true" alt="<?= htmlspecialchars($carta['id']) ?>">
@@ -63,15 +65,15 @@ foreach ($cartas as $carta) {
         </div>
     </section>
 
-    <button id="botao-salvar">Salvar</button>
+    <button id="botao-salvar" onclick="getDeckCardIds()">Salvar</button>
     <script src="montagem.js"></script>
 
     <div class="menu-salvar">
         <div class="campos-menu-salvar">
-            <form action="">
+            <form id="form-salvar-deck" action="">
                 <label for="nome-deck">Nome do Deck:</label>
                 </br></br>
-                <input type="text" name="id" placeholder="Nome do Deck:">
+                <input type="text" name="nome-deck" id="nome-deck" placeholder="Nome do Deck:">
                 </br></br>
                 <button type="submit" id="botao-enviar">Salvar</button>
 
