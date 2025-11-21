@@ -65,12 +65,12 @@ foreach ($cartas as $carta) {
         </div>
     </section>
 
-    <button id="botao-salvar" onclick="getDeckCardIds()">Salvar</button>
+    <button id="botao-salvar">Salvar</button>
     <script src="montagem.js"></script>
 
     <div class="menu-salvar">
         <div class="campos-menu-salvar">
-            <form id="form-salvar-deck" action="">
+            <form id="form-salvar-deck" action="inserirDeck.php">
                 <label for="nome-deck">Nome do Deck:</label>
                 </br></br>
                 <input type="text" name="nome-deck" id="nome-deck" placeholder="Nome do Deck:">
