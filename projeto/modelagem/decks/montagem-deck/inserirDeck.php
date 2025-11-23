@@ -9,7 +9,7 @@ $nomeDeck = trim($_POST['nome-deck'] ?? '');
 $cartasIds = $_POST['cartas-ids'] ?? [];
 
 if ($nomeDeck === '' || count($cartasIds) !== 8) {
-    header('Location: cadastrar-deck.php?erro=dados-invalidos');
+    header('Location: montagem.php?erro=dados-invalidos');
     exit;
 }
 
@@ -29,7 +29,7 @@ try {
 
     $pdo->commit();
 
-    header('Location: cadastrar-deck.php?sucesso=ok');
+    header('Location: montagem.php?sucesso=ok');
     exit;
 
 } catch (Exception $e) {
@@ -38,13 +38,13 @@ try {
         $pdo->rollBack(); // Desfaz a criação do deck e quaisquer cartas que já foram inseridas.
     }
 
-    header('Location: cadastrar-deck.php?erro=db');
+    header('Location: montagem.php?erro=db');
     exit;
 
 } catch (PDOException $e) {
     if ($pdo->inTransaction()) {
         $pdo->rollBack();
     }
-    header('Location: cadastrar-deck.php?erro=db-conexao');
+    header('Location: montagem.php?erro=db-conexao');
     exit;
 }
