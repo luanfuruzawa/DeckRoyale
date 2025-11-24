@@ -9,10 +9,16 @@ function pode(string $perm): bool
     return in_array($perm, $_SESSION['permissoes'] ?? [], true);
 }
 
-require __DIR__ . "/../../src/conexao-bd.php";
+require __DIR__ . "/../../src/conexao-bd.php"; 
+require_once __DIR__ . '/../../src/Repositorio/UsuarioRepositorio.php';
+require_once __DIR__ . '/../../src/Modelo/usuario.php';
 
-// Substitui a query que referenciava carta.nome (não existe)
-// Seleciona apenas colunas reais: id, srcImagem, custo, raridade, e info do deck
+$usuarioRepo = new UsuarioRepositorio($pdo);
+$usuarioLogado = $usuarioRepo->buscarPorEmail($_SESSION['usuario'] ?? '');
+$usuarioIdLogado = $usuarioLogado ? $usuarioLogado->getId() : null;
+ 
+$pesquisa = trim((string)($_GET['pesquisa-deck'] ?? ''));
+ 
 $sql = "
 SELECT
     carta.id           AS carta_id,
@@ -20,27 +26,39 @@ SELECT
     carta.custo        AS carta_custo,
     carta.raridade     AS carta_raridade,
     deck.id            AS deck_id,
-    deck.nome          AS deck_nome
+    deck.nome          AS deck_nome,
+    deck.id_usuario    AS deck_usuario_id
 FROM carta
 INNER JOIN deckCarta ON carta.id = deckCarta.id_carta
 INNER JOIN deck ON deckCarta.id_deck = deck.id
-ORDER BY deck.id, FIELD(carta.raridade, 'Campeao', 'Lendaria', 'Epica', 'Rara', 'Comum');
 ";
-$stmt = $pdo->query($sql);
+ 
+$params = [];
+if ($pesquisa !== '') {
+    $sql .= " WHERE deck.nome LIKE ? ";
+    $params[] = '%' . $pesquisa . '%';
+}
+ 
+$sql .= " ORDER BY (deck.id_usuario = ?) DESC, deck.id, FIELD(carta.raridade, 'Campeao', 'Lendaria', 'Epica', 'Rara', 'Comum');";
+ 
+$params[] = (int) $usuarioIdLogado;
+ 
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
+
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// agrupa resultados por deck (usa deck_id e deck_nome retornados)
 $grupos = [];
 foreach ($rows as $r) {
     $deckId = (int) $r['deck_id'];
     if (!isset($grupos[$deckId])) {
         $grupos[$deckId] = [
-            'nome' => $r['deck_nome'] ?? ("Deck $deckId"),
-            'cartas' => []
+            'nome' => $r['deck_nome'] ?? ("Deck $deckId"),  
+            'cartas' => [], 
+            'usuario_id' => isset($r['deck_usuario_id']) ? (int)$r['deck_usuario_id'] : null
         ];
     }
 
-    // determina um "nome" legível para a carta: filename do srcImagem ou fallback por id
     $cartaNome = '';
     if (!empty($r['carta_imagem'])) {
         $cartaNome = pathinfo($r['carta_imagem'], PATHINFO_FILENAME);
@@ -49,7 +67,7 @@ foreach ($rows as $r) {
     }
 
     $grupos[$deckId]['cartas'][] = [
-        'id' => (int)$r['carta_id'],
+        'id' => (int) $r['carta_id'],
         'nome' => $cartaNome,
         'imagem' => $r['carta_imagem'] ?? '',
         'raridade' => $r['carta_raridade'] ?? ''
@@ -75,48 +93,61 @@ foreach ($rows as $r) {
             <h1 class="titulo">Deck Royale</h1>
         </div>
         <section class="container-barra-pesquisa">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <form action="#" method="post">
+            <i class="fa-solid fa-magnifying-glass"></i> 
+            <form action="" method="get">
                 <label for="pesquisa-deck"></label>
                 <input class="barra-pesquisa" type="text" id="pesquisa-deck" name="pesquisa-deck"
-                    placeholder="Pesquisar Deck...">
+                    placeholder="Pesquisar Deck..." value="<?= htmlspecialchars($pesquisa) ?>">
+                
             </form>
         </section>
     </div>
     <main>
         <div class="deck-container">
+            <?php if (empty($grupos)): ?>
+                <p>Nenhum deck encontrado.</p>
+            <?php endif; ?>
+
             <?php foreach ($grupos as $deckId => $deck): ?>
                 <div class="deck-wrapper" data-deck-id="<?= htmlspecialchars($deckId) ?>">
-                     <div class="cards-grid">
-                         <?php 
-                         $slots = array_slice($deck['cartas'], 0, 8);
-                         for ($i = 0; $i < 8; $i++):
-                             $carta = $slots[$i] ?? null;
-                             $src = '../../img/placeholder.png';
-                             if ($carta && !empty($carta['imagem']) && !empty($carta['raridade'])) {
-                                 $src = '../../src/uploads/' . strtolower($carta['raridade']) . '/' . htmlspecialchars($carta['imagem']);
-                             }
-                         ?>
-                             <div class="card">
-                                 <?php if ($carta): ?>
-                                     <img src="<?= $src ?>"
-                                          alt="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>"
-                                          title="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>">
-                                 <?php else: ?>
-                                     <div class="empty-slot" aria-hidden="true"></div>
-                                 <?php endif; ?>
-                             </div>
-                         <?php endfor; ?>
-                     </div> 
-                    <div class="deck-header">
-                        <div class="deck-name-display"
-                             data-deck-id="<?= htmlspecialchars($deckId) ?>"
-                             aria-label="Nome do deck"><?= htmlspecialchars($deck['nome']) ?></div>
+                    <div class="cards-grid">
+                        <?php
+                        $slots = array_slice($deck['cartas'], 0, 8);
+                        for ($i = 0; $i < 8; $i++):
+                            $carta = $slots[$i] ?? null;
+                            $src = '../../img/placeholder.png';
+                            if ($carta && !empty($carta['imagem']) && !empty($carta['raridade'])) {
+                                $src = '../../src/uploads/' . strtolower($carta['raridade']) . '/' . htmlspecialchars($carta['imagem']);
+                            }
+                            ?>
+                            <div class="card">
+                                <?php if ($carta): ?>
+                                    <img src="<?= $src ?>" alt="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>"
+                                        title="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>">
+                                <?php else: ?>
+                                    <div class="empty-slot" aria-hidden="true"></div>
+                                <?php endif; ?>
+                            </div>
+                        <?php endfor; ?>
                     </div>
-                 </div>
-             <?php endforeach; ?>
-         </div>
-     </main>
+                    <div class="deck-header">
+                        <div class="deck-name-display" data-deck-id="<?= htmlspecialchars($deckId) ?>"
+                            aria-label="Nome do deck"><?= htmlspecialchars($deck['nome']) ?></div>
+                    </div>
+                    <div class="deletar-deck">
+                        <?php if ($usuarioIdLogado !== null && $deck['usuario_id'] === $usuarioIdLogado): ?> 
+                            <form method="post" action="deletar-deck.php" onsubmit="return confirm('Confirma exclusão deste deck?');">
+                                <input type="hidden" name="id-deck" value="<?= htmlspecialchars($deckId) ?>">
+                                <button type="submit" class="btn-delete" title="Excluir deck" aria-label="Excluir deck">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
 
 </body>
 

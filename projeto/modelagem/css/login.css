@@ -11,7 +11,7 @@ html, body {
     min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
-    /* imagem gerada com IA (Chat GPT 05/08)*/
+    /* imagem tirada de https://wall.alphacoders.com/big.php?i=855977*/
     background-image: url("../img/fundo-tela.png");
     background-size: cover;
     font-family: fonteClash;

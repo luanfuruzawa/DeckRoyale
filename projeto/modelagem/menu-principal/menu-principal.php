@@ -30,7 +30,7 @@ function pode(string $perm): bool
             </div>
             <div class="opcoes-menu">
                 <a class="botao-opcao" href="../decks/montagem-deck/montagem.php">Montar Deck</a>
-                <a class="botao-opcao" href="../decks/pesquisa/pesquisa-deck.php">Meus Decks</a>
+                <a class="botao-opcao" href="../decks/pesquisa/pesquisa-deck.php">Decks</a>
                 <?php if (isset($_SESSION['perfil']) && $_SESSION['perfil'] === 'Admin'): ?>
                     <form action="../cartas/administrar/administrar-carta.php" method="post">
                         <button class="botao-opcao" type="submit">Administrar Cartas</button>

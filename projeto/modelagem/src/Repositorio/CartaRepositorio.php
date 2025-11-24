@@ -70,9 +70,22 @@
             return (int) $stmt->fetchColumn();
         }
 
-        public function buscarPaginado(int $limite, int $offset): array
+        public function buscarPaginado(int $limite, int $offset, ?string $ordem = null, ?string $direcao = 'ASC'): array
         {
-            $sql = "SELECT id, custo, srcImagem, raridade FROM carta LIMIT :limite OFFSET :offset";
+            $colunasPermitidas = ['id', 'custo'];
+
+            $sql = "SELECT id, custo, srcImagem, raridade FROM carta";
+
+            if ($ordem !== null && in_array(strtolower($ordem), $colunasPermitidas, true)) {
+                $ordemCol = strtolower($ordem);
+                $direcao = strtoupper($direcao) === 'DESC' ? 'DESC' : 'ASC';
+                $sql .= " ORDER BY {$ordemCol} {$direcao}";
+            } else {
+                $sql .= " ORDER BY FIELD(raridade, 'Campeao', 'Lendaria', 'Epica', 'Rara', 'Comum')";
+            }
+
+            $sql .= " LIMIT :limite OFFSET :offset";
+
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
             $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);

@@ -36,10 +36,14 @@ class DeckRepositorio
     }
 
     public function deletar(int $id): bool
-    {
-        $sql = "DELETE FROM deck WHERE id = ?";
-        $stmt = $this->pdo->prepare($sql);
-        return $stmt->execute([$id]);
+    { 
+        $sql1 = "DELETE FROM deckCarta WHERE id_deck = ?";
+        $stmt1 = $this->pdo->prepare($sql1);
+        $stmt1->execute([$id]);
+ 
+        $sql2 = "DELETE FROM deck WHERE id = ?";
+        $stmt2 = $this->pdo->prepare($sql2);
+        return $stmt2->execute([$id]);
     }
 
     public function buscarTodos(): array
@@ -76,5 +80,20 @@ class DeckRepositorio
         $stmt->execute([$deckId]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Novo: buscar por id
+    public function buscarPorId(int $id): ?Deck
+    {
+        $sql = "SELECT id, nome, id_usuario FROM deck WHERE id = ?";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$id]);
+        $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($dados === false) {
+            return null;
+        }
+
+        return $this->formarObjeto($dados);
     }
 }
