@@ -70,7 +70,7 @@ button {
 p{
     color: rgb(255, 217, 0);
 }
- select#raridade-carta {
+ select#raridade-carta, select#perfil{
     width: 100% !important;
     padding: 10px !important;
     border-radius: 5px !important;

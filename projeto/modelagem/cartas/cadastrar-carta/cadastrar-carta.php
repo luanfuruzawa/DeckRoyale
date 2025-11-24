@@ -20,7 +20,7 @@ $sucesso = $_GET['sucesso'] ?? '';
 </head>
 
 <body>
-    <form action="../../administrar/administrar-carta.php">
+    <form action="../administrar/administrar-carta.php">
         <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
 

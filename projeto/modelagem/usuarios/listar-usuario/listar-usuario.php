@@ -17,6 +17,9 @@ $totalUsuarios = $usuarioRepositorio->contarTodos();
 
 $paginacao = new Paginacao($totalUsuarios, $climite, $paginaAtual);
 
+// Mensagem de sucesso ao excluir
+$sucesso = $_GET['sucesso'] ?? '';
+
 $usuarios = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao->getOffset());
 ?>
 
@@ -33,14 +36,17 @@ $usuarios = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $pagina
 </head>
 
 <body>
-    <form action="../../administrar/administrar-usuario.php">
+    <form action="../../menu-principal/menu-principal.php">
         <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
     <div class="container-formulario">
         <div class="formulario">
             <form action="../../administrar/administrar-usuario.php">
             </form>
-            <h1 class="titulo">Usuarios Cadastradas</h1>
+            <h1 class="titulo">Usuarios Cadastrados</h1>
+            <?php if ($sucesso === 'excluido'): ?>
+                <p class="mensagem-sucesso">Usuário excluído com sucesso!</p>
+            <?php endif; ?>
             <div class="tabela">
                 <table>
                     <thead>
@@ -49,6 +55,8 @@ $usuarios = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $pagina
                             <th>Nome</th>
                             <th>Email</th>
                             <th>Perfil</th>
+                            <th> </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +66,18 @@ $usuarios = $usuarioRepositorio->buscarPaginado($paginacao->getLimite(), $pagina
                                 <td><?= htmlspecialchars($usuario->getNome()) ?></td>
                                 <td><?= htmlspecialchars($usuario->getEmail()) ?></td>
                                 <td><?= htmlspecialchars($usuario->getPerfil()) ?></td>
+                                <td>
+                                    <form action="../atualizar-usuario/atualizar-usuario.php" method="POST">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario->getId()) ?>">
+                                        <button type="submit" class="botao-alterar">Editar</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="../atualizar-usuario/deletar-usuario.php" method="post">
+                                        <input type="hidden" name="id" value="<?= htmlspecialchars($usuario->getId()) ?>">
+                                        <input type="submit" class="botao-alterar" value="Excluir">
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
