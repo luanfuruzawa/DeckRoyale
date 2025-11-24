@@ -3,7 +3,11 @@ session_start();
 if (!isset($_SESSION['usuario'])) {
     header("Location: ../../usuarios/login-usuario/login.php");
     exit;
-}
+} 
+function pode(string $perm): bool
+{
+    return in_array($perm, $_SESSION['permissoes'] ?? [], true);
+} 
 require __DIR__ . "/../../src/conexao-bd.php";
 require __DIR__ . "/../../src/Modelo/carta.php";
 require __DIR__ . "/../../src/paginacao.php";

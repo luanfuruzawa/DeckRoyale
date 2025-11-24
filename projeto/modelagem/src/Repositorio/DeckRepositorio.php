@@ -11,20 +11,19 @@ class DeckRepositorio
 
     private function formarObjeto(array $dados): Deck
     {
-        return new Deck((int)$dados['id'], $dados['nome']);
+        return new Deck((int) $dados['id'], $dados['nome']);
     }
 
     public function salvar(Deck $deck): void
     {
-    $sql = "INSERT INTO deck (nome) VALUES (?)";
-    $stmt = $this->pdo->prepare($sql);
-    $stmt->bindValue(1, $deck->getNome());
-    $stmt->execute();
-    
-    $idGerado = $this->pdo->lastInsertId();
-    
-    $deck->setId((int)$idGerado); 
-}
+
+        $sql = "INSERT INTO deck (nome) VALUES (?)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(1, $deck->getNome());
+        $stmt->execute();
+
+        $deck->setId((int) $this->pdo->lastInsertId());
+    }
 
     public function alterar(Deck $deck): void
     {
@@ -74,7 +73,7 @@ class DeckRepositorio
         $sql = "SELECT c.id, c.nome, c.tipo, c.custo, c.imagem FROM deckCarta dc JOIN carta c ON dc.id_carta = c.id WHERE dc.id_deck = ? ORDER BY c.nome";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute([$deckId]);
-        
-        return $stmt->fetchAll(PDO::FETCH_ASSOC); 
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
