@@ -41,7 +41,9 @@ DROP TABLE IF EXISTS `deck`;
 CREATE TABLE `deck` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_usuario` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT fk_deck_usuario FOREIGN KEY (`id_usuario`) REFERENCES `usuario`(`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

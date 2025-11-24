@@ -86,7 +86,7 @@ foreach ($rows as $r) {
     <main>
         <div class="deck-container">
             <?php foreach ($grupos as $deckId => $deck): ?>
-                <div class="deck-wrapper" data-deck-id="<?= htmlspecialchars($deckId, ENT_QUOTES) ?>">
+                <div class="deck-wrapper" data-deck-id="<?= htmlspecialchars($deckId) ?>">
                      <div class="cards-grid">
                          <?php 
                          $slots = array_slice($deck['cartas'], 0, 8);
@@ -94,14 +94,14 @@ foreach ($rows as $r) {
                              $carta = $slots[$i] ?? null;
                              $src = '../../img/placeholder.png';
                              if ($carta && !empty($carta['imagem']) && !empty($carta['raridade'])) {
-                                 $src = '../../src/uploads/' . strtolower($carta['raridade']) . '/' . htmlspecialchars($carta['imagem'], ENT_QUOTES);
+                                 $src = '../../src/uploads/' . strtolower($carta['raridade']) . '/' . htmlspecialchars($carta['imagem']);
                              }
                          ?>
                              <div class="card">
                                  <?php if ($carta): ?>
                                      <img src="<?= $src ?>"
-                                          alt="<?= htmlspecialchars($carta['nome'] ?? 'Carta', ENT_QUOTES) ?>"
-                                          title="<?= htmlspecialchars($carta['nome'] ?? 'Carta', ENT_QUOTES) ?>">
+                                          alt="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>"
+                                          title="<?= htmlspecialchars($carta['nome'] ?? 'Carta') ?>">
                                  <?php else: ?>
                                      <div class="empty-slot" aria-hidden="true"></div>
                                  <?php endif; ?>
@@ -110,8 +110,8 @@ foreach ($rows as $r) {
                      </div> 
                     <div class="deck-header">
                         <div class="deck-name-display"
-                             data-deck-id="<?= htmlspecialchars($deckId, ENT_QUOTES) ?>"
-                             aria-label="Nome do deck"><?= htmlspecialchars($deck['nome'], ENT_QUOTES) ?></div>
+                             data-deck-id="<?= htmlspecialchars($deckId) ?>"
+                             aria-label="Nome do deck"><?= htmlspecialchars($deck['nome']) ?></div>
                     </div>
                  </div>
              <?php endforeach; ?>

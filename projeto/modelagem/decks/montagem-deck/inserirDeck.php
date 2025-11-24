@@ -1,14 +1,17 @@
 <?php
 
+session_start();
 require_once __DIR__ . '/../../src/conexao-bd.php';
 require_once __DIR__ . '/../../src/Repositorio/DeckRepositorio.php';
+require_once __DIR__ . '/../../src/Repositorio/UsuarioRepositorio.php';
 require_once __DIR__ . '/../../src/Modelo/carta.php';
 require_once __DIR__ . '/../../src/Modelo/deck.php';
+require_once __DIR__ . '/../../src/Modelo/usuario.php';
 
 $nomeDeck = trim($_POST['nome-deck'] ?? '');
 $cartasIds = $_POST['cartas-ids'] ?? [];
 
-if ($nomeDeck === '' || count($cartasIds) !== 8) {
+if (!isset($_SESSION['usuario']) || $nomeDeck === '' || count($cartasIds) !== 8) {
     header('Location: montagem.php?erro=dados-invalidos');
     exit;
 }
@@ -17,7 +20,18 @@ $repo = new DeckRepositorio($pdo);
 
 try {
     $pdo->beginTransaction();
-    $deck = new Deck(null, $nomeDeck);
+
+    $emailLogado = $_SESSION['usuario'] ?? null;
+    if ($emailLogado === null) {
+        throw new Exception('Usuário não autenticado');
+    }
+    $usuarioRepo = new UsuarioRepositorio($pdo);
+    $usuario = $usuarioRepo->buscarPorEmail($emailLogado);
+    if ($usuario === null) {
+        throw new Exception('Usuário não encontrado');
+    }
+
+    $deck = new Deck(null, $nomeDeck, $usuario->getId());
     $repo->salvar($deck);
 
     $idDeck = $deck->getId();
