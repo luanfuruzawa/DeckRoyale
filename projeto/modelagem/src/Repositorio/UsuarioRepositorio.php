@@ -82,6 +82,16 @@
 
             return array_map(fn($dados) => $this->formarObjeto($dados), $resultados);
         }
+
+        public function buscarPorId(int $id): ?Usuario
+        {
+            $sql = "SELECT id, email, senha, nome, perfil FROM usuario WHERE id = ?";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindValue(1, $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $dados = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $dados ? $this->formarObjeto($dados) : null;
+        }
     }
 
 ?>

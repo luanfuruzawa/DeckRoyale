@@ -9,7 +9,7 @@ require_once __DIR__ . '/../../src/Repositorio/CartaRepositorio.php';
 require_once __DIR__ . '/../../src/Modelo/carta.php';
 require __DIR__ . "/../../src/paginacao.php";
 
-$climite = 15;
+$climite = 10;
 $paginaAtual = isset($_GET['pagina']) ? (int) $_GET['pagina'] : 1;
 
 $cartaRepositorio = new CartaRepositorio($pdo);
@@ -33,7 +33,7 @@ $cartas = $cartaRepositorio->buscarPaginado($paginacao->getLimite(), $paginacao-
 </head>
 
 <body>
-    <form action="../../administrar/administrar-carta.php">
+    <form action="../administrar/administrar-carta.php">
         <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
     <div class="container-formulario">

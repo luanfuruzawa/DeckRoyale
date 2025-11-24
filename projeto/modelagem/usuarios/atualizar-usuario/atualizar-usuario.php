@@ -4,9 +4,20 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: ../login-usuario/login.php");
     exit;
 }
+
 $erro = $_GET['erro'] ?? '';
 $sucesso = $_GET['sucesso'] ?? '';
 $apagar = $_GET['apagar'] ?? '';
+
+$usuario = null;
+require_once __DIR__ . '/../../src/conexao-bd.php';
+require_once __DIR__ . '/../../src/Repositorio/UsuarioRepositorio.php';
+require_once __DIR__ . '/../../src/Modelo/usuario.php';
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $repo = new UsuarioRepositorio($pdo);
+    $usuario = $repo->buscarPorId($id);
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,7 +31,7 @@ $apagar = $_GET['apagar'] ?? '';
 </head>
 
 <body>
-    <form action="../../administrar/administrar-usuario.php">
+    <form action="../listar-usuario/listar-usuario.php">
         <button type="submit" id="botao-menu"><i class="fas fa-arrow-left"></i></button>
     </form>
     <main>
@@ -39,34 +50,20 @@ $apagar = $_GET['apagar'] ?? '';
                 <?php endif; ?>
 
                 <form action="alterarUsuario.php" method="post">
-
-                    <input type="number" id="id" name="id" placeholder="Id do usuario para alterar: ">
+                    <input type="number" id="id" name="id" placeholder="Id do usuario para alterar: " value="<?= htmlspecialchars($usuario?->getId() ?? '') ?>" readonly>
                     <br><br>
-
-                    <input type="text" id="nome" name="nome" placeholder="Nome: ">
+                    <input type="text" id="nome" name="nome" placeholder="Nome: " value="<?= htmlspecialchars($usuario?->getNome() ?? '') ?>">
                     <br><br>
-                    
-                    <input type="text" id="email" name="email" placeholder="Email: ">
+                    <input type="text" id="email" name="email" placeholder="Email: " value="<?= htmlspecialchars($usuario?->getEmail() ?? '') ?>">
                     <br><br>
-
-                    <input type="text" id="perfil" name="perfil" placeholder="User: ">
+                    <label for="perfil">Perfil:</label>
+                    <select id="perfil" name="perfil">
+                        <option value="User" <?= ($usuario && $usuario->getPerfil() === 'User') ? 'selected' : '' ?>>User</option>
+                        <option value="Admin" <?= ($usuario && $usuario->getPerfil() === 'Admin') ? 'selected' : '' ?>>Admin</option>
+                    </select>
                     <br><br>
-
-                    <form action="alterarUsuario.php" method="post">
-                        <button type="submit">Alterar Usuario</button>
-                    </form>
+                    <button type="submit">Alterar Usuario</button>
                 </form>
-                <div class="deletar">
-                    <h1 class="titulo">Apagar Usuario</h1>
-                    <form action="deletar-usuario.php" method="post">
-                        <?php if ($apagar === 'ok'): ?>
-                            <p class="mensagem-sucesso">Usuario apagado com sucesso!</p>
-                        <?php endif; ?>
-                        <input type="text" name="id" placeholder="ID do usuário para deletar">
-                        <br><br>
-                        <button type="submit">Deletar Usuario</button>
-                    </form>
-                </div>
             </div>
         </container>
     </main>
