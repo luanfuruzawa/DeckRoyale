@@ -18,6 +18,8 @@ $usuarioLogado = $usuarioRepo->buscarPorEmail($_SESSION['usuario'] ?? '');
 $usuarioIdLogado = $usuarioLogado ? $usuarioLogado->getId() : null;
  
 $pesquisa = trim((string)($_GET['pesquisa-deck'] ?? ''));
+$pesquisar_por = filter_input(INPUT_GET, 'pesquisar_por', FILTER_SANITIZE_STRING) ?: 'nome';
+$pesquisar_por = in_array($pesquisar_por, ['nome','autor'], true) ? $pesquisar_por : 'nome';
  
 $sql = "
 SELECT
@@ -27,15 +29,21 @@ SELECT
     carta.raridade     AS carta_raridade,
     deck.id            AS deck_id,
     deck.nome          AS deck_nome,
-    deck.id_usuario    AS deck_usuario_id
+    deck.id_usuario    AS deck_usuario_id,
+    usuario.nome       AS usuario_nome
 FROM carta
 INNER JOIN deckCarta ON carta.id = deckCarta.id_carta
 INNER JOIN deck ON deckCarta.id_deck = deck.id
+LEFT JOIN usuario ON deck.id_usuario = usuario.id
 ";
  
 $params = [];
 if ($pesquisa !== '') {
-    $sql .= " WHERE deck.nome LIKE ? ";
+    if ($pesquisar_por === 'autor') {
+        $sql .= " WHERE usuario.nome LIKE ? ";
+    } else {
+        $sql .= " WHERE deck.nome LIKE ? ";
+    }
     $params[] = '%' . $pesquisa . '%';
 }
  
@@ -55,7 +63,8 @@ foreach ($rows as $r) {
         $grupos[$deckId] = [
             'nome' => $r['deck_nome'] ?? ("Deck $deckId"),  
             'cartas' => [], 
-            'usuario_id' => isset($r['deck_usuario_id']) ? (int)$r['deck_usuario_id'] : null
+            'usuario_id' => isset($r['deck_usuario_id']) ? (int)$r['deck_usuario_id'] : null,
+            'usuario_nome' => isset($r['usuario_nome']) ? $r['usuario_nome'] : null
         ];
     }
 
@@ -99,6 +108,11 @@ foreach ($rows as $r) {
                 <input class="barra-pesquisa" type="text" id="pesquisa-deck" name="pesquisa-deck"
                     placeholder="Pesquisar Deck..." value="<?= htmlspecialchars($pesquisa) ?>">
                 
+                <select name="pesquisar_por" id="pesquisar_por">
+                    <option value="nome" <?= $pesquisar_por === 'nome' ? 'selected' : '' ?>>Nome do deck</option>
+                    <option value="autor" <?= $pesquisar_por === 'autor' ? 'selected' : '' ?>>Autor do deck</option>
+                </select>
+                
             </form>
         </section>
     </div>
@@ -132,7 +146,10 @@ foreach ($rows as $r) {
                     </div>
                     <div class="deck-header">
                         <div class="deck-name-display" data-deck-id="<?= htmlspecialchars($deckId) ?>"
-                            aria-label="Nome do deck"><?= htmlspecialchars($deck['nome']) ?></div>
+                            aria-label="Nome do deck">Nome: <?= htmlspecialchars($deck['nome']) ?></div>
+
+                        <div class="deck-autor-display" data-deck-id="<?= htmlspecialchars($deckId) ?>"
+                            aria-label="Autor do deck">Autor: <?= htmlspecialchars(($deck['usuario_id'] === $usuarioIdLogado) ? 'Você' : ($deck['usuario_nome'] ?? 'Desconhecido')) ?></div>
                     </div>
                     <div class="deletar-deck">
                         <?php if ($usuarioIdLogado !== null && $deck['usuario_id'] === $usuarioIdLogado): ?> 
@@ -147,6 +164,14 @@ foreach ($rows as $r) {
                 </div>
             <?php endforeach; ?>
         </div>
+
+        <div class="botao-relatorio">
+            <form action="gerar-relatorio.php" method="get">
+                <button type="submit" id="botao-relatorio">Gerar Relatório de Decks</button>
+            </form>
+
+        </div>
+
     </main>
 
 </body>
