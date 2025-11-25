@@ -69,8 +69,7 @@ table {
     min-width: 550px;
     border-collapse: collapse;
     font-family: fonteClash;
-    font-size: 14px;
-    /* Fonte bem menor */
+    font-size: 14px; 
     color: #000000;
     background-color: #ffffff;
     border-radius: 10px;
@@ -81,8 +80,7 @@ table {
 th,
 td {
     border: 1px solid rgb(192, 165, 11);
-    padding: 6px 8px;
-    /* Menor padding */
+    padding: 6px 8px; 
     text-align: left;
     vertical-align: middle;
     color: #000000;

@@ -1,5 +1,4 @@
-<?php
-// Inclui arquivos do banco e modelos
+<?php 
 require __DIR__ . "../../../src/conexao-bd.php";
 require __DIR__ . "../../../src/Modelo/Deck.php";
 require __DIR__ . "../../../src/Repositorio/DeckRepositorio.php";
